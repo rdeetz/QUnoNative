@@ -8,7 +8,7 @@
     <MinimalCoreWin>true</MinimalCoreWin>
     <ProjectGuid>{e3500191-7f00-41af-b2b4-40fcdd7f1b8c}</ProjectGuid>
     <ProjectName>QUnoComponent</ProjectName>
-    <RootNamespace>QUnoComponent</RootNamespace>
+    <RootNamespace>Mooville.QUno</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -147,9 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props" />
-    <Text Include="readme.txt">
-      <DeploymentContent>false</DeploymentContent>
-    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
