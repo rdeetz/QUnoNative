@@ -1,0 +1,6 @@
+[Bb]in/
+[Oo]bj/
+[Xx]64/
+packages/
+.vs/
+*.user
