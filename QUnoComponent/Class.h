@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoComponent - Class.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "Class.g.h"
 

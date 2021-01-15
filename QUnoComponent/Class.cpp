@@ -1,4 +1,7 @@
-﻿#include "pch.h"
+﻿// QUnoComponent - Class.cpp
+// 2021 Roger Deetz
+
+#include "pch.h"
 #include "Class.h"
 #include "Class.g.cpp"
 
