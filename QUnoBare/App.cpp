@@ -1,7 +1,9 @@
+// QUnoBare - App.cpp
+// 2021 Roger Deetz
+
 #include "pch.h"
 
 using namespace winrt;
-
 using namespace Windows;
 using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Foundation::Numerics;
@@ -146,10 +148,11 @@ namespace Mooville::QUno::Bare
             m_offset.y = -BlockSize / 2.0f;
         }
     };
-
 };
 
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
     CoreApplication::Run(make<Mooville::QUno::Bare::App>());
+
+    return 0;
 }

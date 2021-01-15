@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿// QUnoBare - pch.h
+// 2021 Roger Deetz
+
+#pragma once
+
 #include <windows.h>
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Foundation.Collections.h>
