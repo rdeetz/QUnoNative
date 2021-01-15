@@ -2,7 +2,7 @@
 
 #include "Class.g.h"
 
-namespace winrt::QUnoComponent::implementation
+namespace winrt::Mooville::QUno::implementation
 {
     struct Class : ClassT<Class>
     {
@@ -13,7 +13,7 @@ namespace winrt::QUnoComponent::implementation
     };
 }
 
-namespace winrt::QUnoComponent::factory_implementation
+namespace winrt::Mooville::QUno::factory_implementation
 {
     struct Class : ClassT<Class, implementation::Class>
     {

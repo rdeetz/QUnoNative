@@ -2,7 +2,7 @@
 #include "Class.h"
 #include "Class.g.cpp"
 
-namespace winrt::QUnoComponent::implementation
+namespace winrt::Mooville::QUno::implementation
 {
     int32_t Class::MyProperty()
     {
