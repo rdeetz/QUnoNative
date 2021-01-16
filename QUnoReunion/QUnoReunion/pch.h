@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿// QUnoReunion - pch.h
+// 2021 Roger Deetz
+
+#pragma once
+
 #include <windows.h>
 #include <unknwn.h>
 #include <restrictederrorinfo.h>

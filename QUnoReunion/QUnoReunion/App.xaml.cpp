@@ -1,5 +1,7 @@
-﻿#include "pch.h"
+﻿// QUnoReunion - App.xaml.cpp
+// 2021 Roger Deetz
 
+#include "pch.h"
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
 
@@ -10,11 +12,6 @@ using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
 using namespace Mooville::QUno::Reunion;
 using namespace Mooville::QUno::Reunion::implementation;
-//using namespace QUnoReunion;
-//using namespace QUnoReunion::implementation;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 /// <summary>
 /// Initializes the singleton application object.  This is the first line of authored code

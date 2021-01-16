@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoReunion - MainWindow.xaml.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #pragma push_macro("GetCurrentTime")
 #undef GetCurrentTime
