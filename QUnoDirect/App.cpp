@@ -1,9 +1,9 @@
+// QUnoDirect - App.cpp
+// 2021 Roger Deetz
+
 #include "pch.h"
 #include "App.h"
-
 #include <ppltasks.h>
-
-using namespace Mooville::QUno::Direct;
 
 using namespace concurrency;
 using namespace Windows::ApplicationModel;
@@ -14,10 +14,9 @@ using namespace Windows::UI::Input;
 using namespace Windows::System;
 using namespace Windows::Foundation;
 using namespace Windows::Graphics::Display;
+using namespace Mooville::QUno::Direct;
 
 using Microsoft::WRL::ComPtr;
-
-// The DirectX 12 Application template is documented at https://go.microsoft.com/fwlink/?LinkID=613670&clcid=0x409
 
 // The main function is only used to initialize our IFrameworkView class.
 [Platform::MTAThread]
@@ -224,5 +223,6 @@ std::shared_ptr<DX::DeviceResources> App::GetDeviceResources()
 		m_deviceResources->SetWindow(CoreWindow::GetForCurrentThread());
 		m_main->CreateRenderers(m_deviceResources);
 	}
+
 	return m_deviceResources;
 }

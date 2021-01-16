@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - DeviceResources.h
+// 2021 Roger Deetz
+
+#pragma once
 
 namespace DX
 {

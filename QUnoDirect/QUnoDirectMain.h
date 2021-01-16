@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - QUnoDirectMain.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "Common\StepTimer.h"
 #include "Common\DeviceResources.h"

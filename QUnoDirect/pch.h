@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - pch.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include <wrl.h>
 #include <wrl/client.h>

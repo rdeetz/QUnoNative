@@ -1,3 +1,6 @@
+// QUnoDirect - SampleVertexShader.hlsl
+// 2021 Roger Deetz
+
 // A constant buffer that stores the three basic column-major matrices for composing geometry.
 cbuffer ModelViewProjectionConstantBuffer : register(b0)
 {

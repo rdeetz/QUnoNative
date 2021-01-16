@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - ShaderStructures.h
+// 2021 Roger Deetz
+
+#pragma once
 
 namespace Mooville
 {

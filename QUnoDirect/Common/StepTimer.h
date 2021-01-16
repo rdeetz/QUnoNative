@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - StepTimer.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include <wrl.h>
 

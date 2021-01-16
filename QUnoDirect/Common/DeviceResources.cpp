@@ -1,4 +1,7 @@
-﻿#include "pch.h"
+﻿// QUnoDirect - DeviceResources.cpp
+// 2021 Roger Deetz
+
+#include "pch.h"
 #include "DeviceResources.h"
 #include "DirectXHelper.h"
 

@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - App.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "pch.h"
 #include "Common\DeviceResources.h"

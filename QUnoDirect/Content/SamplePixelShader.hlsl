@@ -1,3 +1,6 @@
+// QUnoDirect - SamplePixelShader.hlsl
+// 2021 Roger Deetz
+
 // Per-pixel color data passed through the pixel shader.
 struct PixelShaderInput
 {

@@ -1,11 +1,14 @@
+// QUnoDirect - QUnoDirectMain.cpp
+// 2021 Roger Deetz
+
 #include "pch.h"
 #include "QUnoDirectMain.h"
 #include "Common\DirectXHelper.h"
 
-using namespace Mooville::QUno::Direct;
+using namespace Concurrency;
 using namespace Windows::Foundation;
 using namespace Windows::System::Threading;
-using namespace Concurrency;
+using namespace Mooville::QUno::Direct;
 
 // The DirectX 12 Application template is documented at https://go.microsoft.com/fwlink/?LinkID=613670&clcid=0x409
 

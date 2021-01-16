@@ -1,17 +1,18 @@
-﻿#include "pch.h"
-#include "Sample3DSceneRenderer.h"
+﻿// QUnoDirect - Sample3DSceneRenderer.cpp
+// 2021 Roger Deetz
 
+#include "pch.h"
+#include "Sample3DSceneRenderer.h"
 #include "..\Common\DirectXHelper.h"
 #include <ppltasks.h>
 #include <synchapi.h>
-
-using namespace Mooville::QUno::Direct;
 
 using namespace Concurrency;
 using namespace DirectX;
 using namespace Microsoft::WRL;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
+using namespace Mooville::QUno::Direct;
 
 // Indices into the application state map.
 Platform::String^ AngleKey = "Angle";

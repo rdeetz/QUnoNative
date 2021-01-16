@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - Sample3DSceneRenderer.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "..\Common\DeviceResources.h"
 #include "ShaderStructures.h"

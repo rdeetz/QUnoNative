@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoDirect - DirectXHelper.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include <ppltasks.h>	// For create_task
 
