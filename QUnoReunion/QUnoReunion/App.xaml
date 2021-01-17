@@ -8,6 +8,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
             </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="CardRedBrush" Color="#FFAA0000"/>
+            <SolidColorBrush x:Key="CardBlueBrush" Color="#FF0000AA"/>
+            <SolidColorBrush x:Key="CardYellowBrush" Color="#FFD4D400"/>
+            <SolidColorBrush x:Key="CardGreenBrush" Color="#FF009C00"/>
+            <SolidColorBrush x:Key="CardBlackBrush" Color="#FF303030"/>
+            <SolidColorBrush x:Key="CardTransparentBrush" Color="Transparent"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

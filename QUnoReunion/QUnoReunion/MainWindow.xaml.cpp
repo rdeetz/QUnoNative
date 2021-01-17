@@ -15,6 +15,7 @@ namespace winrt::Mooville::QUno::Reunion::implementation
     MainWindow::MainWindow()
     {
         InitializeComponent();
+        Title(L"QUno");
     }
 
     int32_t MainWindow::MyProperty()

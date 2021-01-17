@@ -6,7 +6,17 @@
     xmlns:local="using:Mooville.QUno.Reunion"
     mc:Ignorable="d"
     x:Class="Mooville.QUno.Reunion.MainWindow">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+        </StackPanel>
+    </Grid>
 </Window>
