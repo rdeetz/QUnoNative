@@ -1,0 +1,11 @@
+namespace Mooville.QUno
+{
+	enum Color
+	{
+		Wild,
+		Red,
+		Blue,
+		Yellow,
+		Green,
+	};
+}

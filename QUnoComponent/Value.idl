@@ -1,0 +1,21 @@
+namespace Mooville.QUno
+{
+    enum Value
+    {
+        Wild,
+        WildDrawFour,
+        DrawTwo,
+        Reverse,
+        Skip,
+        Zero,
+        One,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+    };
+}
