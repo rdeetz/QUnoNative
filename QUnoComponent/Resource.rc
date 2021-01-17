@@ -71,7 +71,7 @@ BEGIN
             VALUE "FileDescription", "QUno Library Windows Runtime Component"
             VALUE "FileVersion", "5.0.0.0"
             VALUE "InternalName", "QUnoComponent.dll"
-            VALUE "LegalCopyright", "Copyright (C) 2021 Roger Deetz. All rights reserved."
+            VALUE "LegalCopyright", "Copyright (c) 2021 Roger Deetz. All rights reserved."
             VALUE "OriginalFilename", "QUnoComponent.dll"
             VALUE "ProductName", "QUno"
             VALUE "ProductVersion", "5.0.0.0"
