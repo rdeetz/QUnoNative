@@ -124,17 +124,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="Color.h" />
+    <ClInclude Include="Card.h">
+      <DependentUpon>Card.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <DependentUpon>Color.idl</DependentUpon>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Class.h">
       <DependentUpon>Class.idl</DependentUpon>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Value.h" />
+    <ClInclude Include="Value.h">
+      <DependentUpon>Value.idl</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Card.cpp">
+      <DependentUpon>Card.idl</DependentUpon>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
