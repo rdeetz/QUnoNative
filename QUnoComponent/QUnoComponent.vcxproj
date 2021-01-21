@@ -124,21 +124,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h">
-      <DependentUpon>Card.idl</DependentUpon>
+    <ClInclude Include="Model\Card.h">
+      <DependentUpon>Model\Card.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="Color.h">
-      <DependentUpon>Color.idl</DependentUpon>
+    <ClInclude Include="Model\Color.h">
+      <DependentUpon>Model\Color.idl</DependentUpon>
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Value.h">
-      <DependentUpon>Value.idl</DependentUpon>
+    <ClInclude Include="Model\Value.h">
+      <DependentUpon>Model\Value.idl</DependentUpon>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Card.cpp">
-      <DependentUpon>Card.idl</DependentUpon>
+    <ClCompile Include="Model\Card.cpp">
+      <DependentUpon>Model\Card.idl</DependentUpon>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -146,9 +146,9 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Card.idl" />
-    <Midl Include="Color.idl" />
-    <Midl Include="Value.idl" />
+    <Midl Include="Model\Card.idl" />
+    <Midl Include="Model\Color.idl" />
+    <Midl Include="Model\Value.idl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

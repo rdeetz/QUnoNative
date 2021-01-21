@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace winrt::Mooville::QUno::implementation
+namespace winrt::Mooville::QUno::Model::implementation
 {
     enum class Value
     {

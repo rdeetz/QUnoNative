@@ -1,4 +1,4 @@
-namespace Mooville.QUno
+namespace Mooville.QUno.Model
 {
 	enum Color
 	{
