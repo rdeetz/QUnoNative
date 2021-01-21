@@ -1,0 +1,13 @@
+import "Color.idl";
+import "Value.idl";
+
+namespace Mooville.QUno
+{
+    [default_interface]
+    runtimeclass Card
+    {
+        Card();
+        Mooville.QUno.Color Color;
+        Mooville.QUno.Value Value;
+    }
+}
