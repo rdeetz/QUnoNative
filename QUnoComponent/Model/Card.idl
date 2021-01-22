@@ -7,6 +7,7 @@ namespace Mooville.QUno.Model
     runtimeclass Card
     {
         Card();
+        Card(Mooville.QUno.Model.Color c, Mooville.QUno.Model.Value v);
         Mooville.QUno.Model.Color Color;
         Mooville.QUno.Model.Value Value;
     }

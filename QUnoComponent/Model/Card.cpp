@@ -7,23 +7,31 @@
 
 namespace winrt::Mooville::QUno::Model::implementation
 {
+    Card::Card(Mooville::QUno::Model::Color color, Mooville::QUno::Model::Value value)
+    {
+        _color = color;
+        _value = value;
+    }
+
     Mooville::QUno::Model::Color Card::Color()
     {
-        throw hresult_not_implemented();
+        return _color;
     }
 
     void Card::Color(Mooville::QUno::Model::Color color)
     {
-        throw hresult_not_implemented();
+        _color = color;
+        return;
     }
 
     Mooville::QUno::Model::Value Card::Value()
     {
-        throw hresult_not_implemented();
+        return _value;
     }
 
     void Card::Value(Mooville::QUno::Model::Value value)
     {
-        throw hresult_not_implemented();
+        _value = value;
+        return;
     }
 }

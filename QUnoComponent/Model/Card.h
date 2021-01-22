@@ -12,11 +12,16 @@ namespace winrt::Mooville::QUno::Model::implementation
     struct Card : CardT<Card>
     {
         Card() = default;
+        Card(Mooville::QUno::Model::Color color, Mooville::QUno::Model::Value value);
 
         Mooville::QUno::Model::Color Color();
         void Color(Mooville::QUno::Model::Color color);
         Mooville::QUno::Model::Value Value();
         void Value(Mooville::QUno::Model::Value value);
+
+    private:
+        Mooville::QUno::Model::Color _color;
+        Mooville::QUno::Model::Value _value;
     };
 }
 
