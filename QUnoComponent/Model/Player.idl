@@ -1,0 +1,13 @@
+import "Model\Hand.idl";
+
+namespace Mooville.QUno.Model
+{
+	[default_interface]
+	runtimeclass Player
+	{
+		Player();
+		String Name;
+		Boolean IsHuman;
+		Mooville.QUno.Model.Hand Hand{ get; };
+	};
+}
