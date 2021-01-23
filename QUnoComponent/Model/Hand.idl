@@ -1,0 +1,11 @@
+import "Model\Card.idl";
+
+namespace Mooville.QUno.Model
+{
+    [default_interface]
+    runtimeclass Hand
+    {
+        Hand();
+        Windows.Foundation.Collections.IObservableVector<Mooville.QUno.Model.Card> Cards{ get; };
+    }
+}

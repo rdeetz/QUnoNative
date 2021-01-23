@@ -130,6 +130,7 @@
     <ClInclude Include="Model\Color.h">
       <DependentUpon>Model\Color.idl</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Model\Hand.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Model\Value.h">
@@ -140,6 +141,7 @@
     <ClCompile Include="Model\Card.cpp">
       <DependentUpon>Model\Card.idl</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Model\Hand.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -148,6 +150,7 @@
   <ItemGroup>
     <Midl Include="Model\Card.idl" />
     <Midl Include="Model\Color.idl" />
+    <Midl Include="Model\Hand.idl" />
     <Midl Include="Model\Value.idl" />
   </ItemGroup>
   <ItemGroup>
