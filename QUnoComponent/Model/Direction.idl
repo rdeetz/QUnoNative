@@ -1,0 +1,8 @@
+namespace Mooville.QUno.Model
+{
+	enum Direction
+	{
+		Clockwise,
+		Counterclockwise,
+	};
+}
