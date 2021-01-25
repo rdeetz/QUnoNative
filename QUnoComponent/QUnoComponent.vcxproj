@@ -153,6 +153,7 @@
   <ItemGroup>
     <Midl Include="Model\Card.idl" />
     <Midl Include="Model\Color.idl" />
+    <Midl Include="Model\Deck.idl" />
     <Midl Include="Model\Direction.idl" />
     <Midl Include="Model\Hand.idl" />
     <Midl Include="Model\Player.idl" />

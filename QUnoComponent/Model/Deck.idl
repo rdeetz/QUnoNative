@@ -1,0 +1,18 @@
+import "Model\Color.idl";
+import "Model\Card.idl";
+
+namespace Mooville.QUno.Model
+{
+	[default_interface]
+	runtimeclass Deck
+	{
+		Deck();
+		Mooville.QUno.Model.Card CurrentCard;
+		Mooville.QUno.Model.Color CurrentWildColor;
+		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DrawPile{ get; };
+		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DiscardPile{ get; };
+		void Shuffle();
+		Mooville.QUno.Model.Card Draw();
+		void Play(Mooville.QUno.Model.Card c);
+	};
+}
