@@ -1,0 +1,10 @@
+import "Model\IDeckProvider.idl";
+
+namespace Mooville.QUno.Model
+{
+	[default_interface]
+	runtimeclass EmptyDeckProvider : IDeckProvider
+	{
+		EmptyDeckProvider();
+	};
+}
