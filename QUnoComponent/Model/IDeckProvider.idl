@@ -1,0 +1,9 @@
+import "Model\Card.idl";
+
+namespace Mooville.QUno.Model
+{
+	interface IDeckProvider
+	{
+		Windows.Foundation.Collections.IIterable<Mooville.QUno.Model.Card> ProvideCards();
+	};
+}
