@@ -40,4 +40,14 @@ namespace winrt::Mooville::QUno::Model::implementation
     {
         return _hand;
     }
+
+    Mooville::QUno::Model::Card Player::ChooseCardToPlay()
+    {
+        throw hresult_not_implemented();
+    }
+
+    Mooville::QUno::Model::Color Player::ChooseWildColor()
+    {
+        throw hresult_not_implemented();
+    }
 }
