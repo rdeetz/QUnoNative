@@ -162,6 +162,7 @@
     <Midl Include="Model\Deck.idl" />
     <Midl Include="Model\Direction.idl" />
     <Midl Include="Model\EmptyDeckProvider.idl" />
+    <Midl Include="Model\Game.idl" />
     <Midl Include="Model\Hand.idl" />
     <Midl Include="Model\IDeckProvider.idl" />
     <Midl Include="Model\IRuleProvider.idl" />

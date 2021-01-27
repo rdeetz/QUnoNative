@@ -1,0 +1,25 @@
+import "Model\Color.idl";
+import "Model\Card.idl";
+import "Model\Direction.idl";
+import "Model\Player.idl";
+import "Model\Deck.idl";
+import "Model\IRuleProvider.idl";
+
+namespace Mooville.QUno.Model
+{
+	[default_interface]
+	runtimeclass Game
+	{
+		Game();
+		Windows.Foundation.Collections.IObservableVector<Mooville.QUno.Model.Player> Players { get; };
+		Mooville.QUno.Model.Deck Deck { get; };
+		Mooville.QUno.Model.Direction CurrentDirection;
+		Mooville.QUno.Model.Player CurrentPlayer { get; };
+		Int32 CurrentPlayerIndex;
+		Boolean IsGameOver { get; };
+		void Deal();
+		Boolean CanPlay(Mooville.QUno.Model.Card card);
+		void PlayCard(Mooville.QUno.Model.Card card, Mooville.QUno.Model.Color wildColor);
+		Mooville.QUno.Model.Card DrawCard();
+	};
+}
