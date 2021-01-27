@@ -133,6 +133,7 @@
     <ClInclude Include="Model\Deck.h" />
     <ClInclude Include="Model\Direction.h" />
     <ClInclude Include="Model\EmptyDeckProvider.h" />
+    <ClInclude Include="Model\Game.h" />
     <ClInclude Include="Model\Hand.h" />
     <ClInclude Include="Model\IDeckProvider.h" />
     <ClInclude Include="Model\IRuleProvider.h" />
@@ -149,6 +150,7 @@
     </ClCompile>
     <ClCompile Include="Model\Deck.cpp" />
     <ClCompile Include="Model\EmptyDeckProvider.cpp" />
+    <ClCompile Include="Model\Game.cpp" />
     <ClCompile Include="Model\Hand.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="pch.cpp">
