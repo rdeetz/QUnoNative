@@ -130,14 +130,30 @@
     <ClInclude Include="Model\Color.h">
       <DependentUpon>Model\Color.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="Model\Deck.h" />
-    <ClInclude Include="Model\Direction.h" />
-    <ClInclude Include="Model\EmptyDeckProvider.h" />
-    <ClInclude Include="Model\Game.h" />
-    <ClInclude Include="Model\Hand.h" />
-    <ClInclude Include="Model\IDeckProvider.h" />
-    <ClInclude Include="Model\IRuleProvider.h" />
-    <ClInclude Include="Model\Player.h" />
+    <ClInclude Include="Model\Deck.h">
+      <DependentUpon>Model\Deck.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\Direction.h">
+      <DependentUpon>Model\Direction.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\EmptyDeckProvider.h">
+      <DependentUpon>Model\EmptyDeckProvider.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\Game.h">
+      <DependentUpon>Model\Game.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\Hand.h">
+      <DependentUpon>Model\Hand.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\IDeckProvider.h">
+      <DependentUpon>Model\IDeckProvider.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\IRuleProvider.h">
+      <DependentUpon>Model\IRuleProvider.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Model\Player.h">
+      <DependentUpon>Model\Player.idl</DependentUpon>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Model\Value.h">
@@ -148,11 +164,21 @@
     <ClCompile Include="Model\Card.cpp">
       <DependentUpon>Model\Card.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="Model\Deck.cpp" />
-    <ClCompile Include="Model\EmptyDeckProvider.cpp" />
-    <ClCompile Include="Model\Game.cpp" />
-    <ClCompile Include="Model\Hand.cpp" />
-    <ClCompile Include="Model\Player.cpp" />
+    <ClCompile Include="Model\Deck.cpp">
+      <DependentUpon>Model\Deck.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Model\EmptyDeckProvider.cpp">
+      <DependentUpon>Model\EmptyDeckProvider.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Model\Game.cpp">
+      <DependentUpon>Model\Game.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Model\Hand.cpp">
+      <DependentUpon>Model\Hand.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Model\Player.cpp">
+      <DependentUpon>Model\Player.idl</DependentUpon>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
