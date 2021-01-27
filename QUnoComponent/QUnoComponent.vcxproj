@@ -135,6 +135,7 @@
     <ClInclude Include="Model\EmptyDeckProvider.h" />
     <ClInclude Include="Model\Hand.h" />
     <ClInclude Include="Model\IDeckProvider.h" />
+    <ClInclude Include="Model\IRuleProvider.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
@@ -163,6 +164,7 @@
     <Midl Include="Model\EmptyDeckProvider.idl" />
     <Midl Include="Model\Hand.idl" />
     <Midl Include="Model\IDeckProvider.idl" />
+    <Midl Include="Model\IRuleProvider.idl" />
     <Midl Include="Model\Player.idl" />
     <Midl Include="Model\Value.idl" />
   </ItemGroup>

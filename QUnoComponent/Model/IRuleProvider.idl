@@ -1,0 +1,15 @@
+import "Model\Color.idl";
+import "Model\Card.idl";
+
+namespace Mooville.QUno.Model
+{
+	interface IRuleProvider
+	{
+		Int32 GetHandSize();
+		Boolean CanPlay(Mooville.QUno.Model.Card card, Mooville.QUno.Model.Card currentCard, Mooville.QUno.Model.Color currentWildColor);
+		Boolean ChangedDirection(Mooville.QUno.Model.Card card);
+		Int32 GetPlayerIncrement(Mooville.QUno.Model.Card card);
+		Int32 GetNumberOfCardsToAdd(Mooville.QUno.Model.Card card);
+		Boolean ValidateWildColor(Mooville.QUno.Model.Card card, Mooville.QUno.Model.Color wildColor);
+	};
+}
