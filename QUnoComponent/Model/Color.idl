@@ -1,3 +1,6 @@
+// QUnoComponent - Color.idl
+// 2021 Roger Deetz
+
 namespace Mooville.QUno.Model
 {
 	enum Color

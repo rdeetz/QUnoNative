@@ -1,3 +1,6 @@
+// QUnoComponent - Player.idl
+// 2021 Roger Deetz
+
 import "Model\Hand.idl";
 
 namespace Mooville.QUno.Model
@@ -8,7 +11,7 @@ namespace Mooville.QUno.Model
 		Player();
 		String Name;
 		Boolean IsHuman;
-		Mooville.QUno.Model.Hand Hand{ get; };
+		Mooville.QUno.Model.Hand Hand { get; };
 		Mooville.QUno.Model.Card ChooseCardToPlay();
 		Mooville.QUno.Model.Color ChooseWildColor();
 	};

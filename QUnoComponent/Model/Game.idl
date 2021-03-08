@@ -1,9 +1,11 @@
+// QUnoComponent - Game.idl
+// 2021 Roger Deetz
+
 import "Model\Color.idl";
 import "Model\Card.idl";
 import "Model\Direction.idl";
 import "Model\Player.idl";
 import "Model\Deck.idl";
-import "Model\IRuleProvider.idl";
 
 namespace Mooville.QUno.Model
 {
@@ -18,7 +20,7 @@ namespace Mooville.QUno.Model
 		Int32 CurrentPlayerIndex;
 		Boolean IsGameOver { get; };
 		void Deal();
-		Boolean CanPlay(Mooville.QUno.Model.Card card);
+		Boolean CanPlayCard(Mooville.QUno.Model.Card card);
 		void PlayCard(Mooville.QUno.Model.Card card, Mooville.QUno.Model.Color wildColor);
 		Mooville.QUno.Model.Card DrawCard();
 	};

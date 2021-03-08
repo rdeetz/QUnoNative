@@ -1,3 +1,6 @@
+// QUnoComponent - Deck.idl
+// 2021 Roger Deetz
+
 import "Model\Color.idl";
 import "Model\Card.idl";
 
@@ -7,10 +10,10 @@ namespace Mooville.QUno.Model
 	runtimeclass Deck
 	{
 		Deck();
-		Mooville.QUno.Model.Card CurrentCard;
+		Mooville.QUno.Model.Card CurrentCard { get; };
 		Mooville.QUno.Model.Color CurrentWildColor;
-		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DrawPile{ get; };
-		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DiscardPile{ get; };
+		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DrawPile { get; };
+		Windows.Foundation.Collections.IVector<Mooville.QUno.Model.Card> DiscardPile { get; };
 		void Shuffle();
 		Mooville.QUno.Model.Card Draw();
 		void Play(Mooville.QUno.Model.Card c);

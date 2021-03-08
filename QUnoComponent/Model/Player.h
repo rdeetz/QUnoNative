@@ -17,7 +17,7 @@ namespace winrt::Mooville::QUno::Model::implementation
         boolean IsHuman();
         void IsHuman(boolean isHuman);
         Mooville::QUno::Model::Hand Hand();
-        Mooville::QUno::Model::Card ChooseCardToPlay(); // Need at least current card, maybe other game data.
+        Mooville::QUno::Model::Card ChooseCardToPlay(); // Need at least the current card, maybe other game data?
         Mooville::QUno::Model::Color ChooseWildColor();
 
     private:

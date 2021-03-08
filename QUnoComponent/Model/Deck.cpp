@@ -16,11 +16,7 @@ namespace winrt::Mooville::QUno::Model::implementation
 
     Mooville::QUno::Model::Card Deck::CurrentCard()
     {
-        throw hresult_not_implemented();
-    }
-
-    void Deck::CurrentCard(Mooville::QUno::Model::Card card)
-    {
+        // TODO Peek at the top of the discard pile.
         throw hresult_not_implemented();
     }
 
@@ -52,11 +48,13 @@ namespace winrt::Mooville::QUno::Model::implementation
 
     Mooville::QUno::Model::Card Deck::Draw()
     {
+        // TODO Pop the card off of the draw pile.
         throw hresult_not_implemented();
     }
 
     void Deck::Play(Mooville::QUno::Model::Card card)
     {
+        // TODO Push the card onto the discard pile.
         throw hresult_not_implemented();
     }
 }

@@ -18,20 +18,8 @@ namespace winrt::Mooville::QUno::Model::implementation
         return _color;
     }
 
-    void Card::Color(Mooville::QUno::Model::Color color)
-    {
-        _color = color;
-        return;
-    }
-
     Mooville::QUno::Model::Value Card::Value()
     {
         return _value;
-    }
-
-    void Card::Value(Mooville::QUno::Model::Value value)
-    {
-        _value = value;
-        return;
     }
 }

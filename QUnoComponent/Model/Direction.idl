@@ -1,3 +1,6 @@
+// QUnoComponent - Direction.idl
+// 2021 Roger Deetz
+
 namespace Mooville.QUno.Model
 {
 	enum Direction

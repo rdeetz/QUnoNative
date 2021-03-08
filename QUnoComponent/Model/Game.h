@@ -25,11 +25,15 @@ namespace winrt::Mooville::QUno::Model::implementation
         void CurrentPlayerIndex(int currentPlayerIndex);
         bool IsGameOver();
         void Deal();
-        bool CanPlay(Mooville::QUno::Model::Card card);
+        bool CanPlayCard(Mooville::QUno::Model::Card card);
         void PlayCard(Mooville::QUno::Model::Card card, Mooville::QUno::Model::Color wildColor);
         Mooville::QUno::Model::Card DrawCard();
 
     private:
+        Windows::Foundation::Collections::IObservableVector<Mooville::QUno::Model::Player> _players;
+        Mooville::QUno::Model::Deck _deck;
+        Mooville::QUno::Model::Direction _currentDirection;
+        int _currentPlayerIndex;
     };
 }
 

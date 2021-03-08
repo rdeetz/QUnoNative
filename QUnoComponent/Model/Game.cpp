@@ -9,41 +9,46 @@ namespace winrt::Mooville::QUno::Model::implementation
 {
     Game::Game()
     {
+        _players = winrt::single_threaded_observable_vector<Mooville::QUno::Model::Player>();
+        _deck = make<Mooville::QUno::Model::implementation::Deck>();
     }
 
     Windows::Foundation::Collections::IObservableVector<Mooville::QUno::Model::Player> Game::Players()
     {
-        throw hresult_not_implemented();
+        return _players;
     }
 
     Mooville::QUno::Model::Deck Game::Deck()
     {
-        throw hresult_not_implemented();
+        return _deck;
     }
 
     Mooville::QUno::Model::Direction Game::CurrentDirection()
     {
-        throw hresult_not_implemented();
+        return _currentDirection;
     }
 
     void Game::CurrentDirection(Mooville::QUno::Model::Direction currentDirection)
     {
-        throw hresult_not_implemented();
+        _currentDirection = currentDirection;
+        return;
     }
 
     Mooville::QUno::Model::Player Game::CurrentPlayer()
     {
+        // TODO Find the player in the players collection at the current index.
         throw hresult_not_implemented();
     }
 
     int Game::CurrentPlayerIndex()
     {
-        throw hresult_not_implemented();
+        return _currentPlayerIndex;
     }
 
     void Game::CurrentPlayerIndex(int currentPlayerIndex)
     {
-        throw hresult_not_implemented();
+        _currentPlayerIndex = currentPlayerIndex;
+        return;
     }
 
     bool Game::IsGameOver()
@@ -56,7 +61,7 @@ namespace winrt::Mooville::QUno::Model::implementation
         throw hresult_not_implemented();
     }
 
-    bool Game::CanPlay(Mooville::QUno::Model::Card card)
+    bool Game::CanPlayCard(Mooville::QUno::Model::Card card)
     {
         throw hresult_not_implemented();
     }

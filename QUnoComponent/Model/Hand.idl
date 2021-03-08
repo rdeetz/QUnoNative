@@ -1,3 +1,6 @@
+// QUnoComponent - Hand.idl
+// 2021 Roger Deetz
+
 import "Model\Card.idl";
 
 namespace Mooville.QUno.Model
@@ -6,6 +9,6 @@ namespace Mooville.QUno.Model
     runtimeclass Hand
     {
         Hand();
-        Windows.Foundation.Collections.IObservableVector<Mooville.QUno.Model.Card> Cards{ get; };
+        Windows.Foundation.Collections.IObservableVector<Mooville.QUno.Model.Card> Cards { get; };
     }
 }

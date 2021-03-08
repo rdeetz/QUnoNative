@@ -14,7 +14,6 @@ namespace winrt::Mooville::QUno::Model::implementation
         Deck();
 
         Mooville::QUno::Model::Card CurrentCard();
-        void CurrentCard(Mooville::QUno::Model::Card card);
         Mooville::QUno::Model::Color CurrentWildColor();
         void CurrentWildColor(Mooville::QUno::Model::Color wildColor);
         Windows::Foundation::Collections::IVector<Mooville::QUno::Model::Card> DrawPile();
