@@ -1,3 +1,6 @@
+// QUnoComponent - EmptyDeckProvider.idl
+// 2021 Roger Deetz
+
 import "Model\IDeckProvider.idl";
 
 namespace Mooville.QUno.Model

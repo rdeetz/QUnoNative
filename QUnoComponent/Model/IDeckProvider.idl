@@ -1,3 +1,6 @@
+// QUnoComponent - IDeckProvider.idl
+// 2021 Roger Deetz
+
 import "Model\Card.idl";
 
 namespace Mooville.QUno.Model

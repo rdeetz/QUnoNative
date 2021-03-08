@@ -1,3 +1,6 @@
+// QUnoComponent - IRuleProvider.idl
+// 2021 Roger Deetz
+
 import "Model\Color.idl";
 import "Model\Card.idl";
 
