@@ -2,6 +2,7 @@
 // 2021 Roger Deetz
 
 #include "pch.h"
+#include "winrt/Mooville.QUno.Model.h"
 
 using namespace winrt;
 using namespace Windows;
@@ -10,6 +11,7 @@ using namespace Windows::Foundation::Numerics;
 using namespace Windows::UI;
 using namespace Windows::UI::Core;
 using namespace Windows::UI::Composition;
+using namespace winrt::Mooville::QUno::Model;
 
 namespace Mooville::QUno::Bare
 {
@@ -65,6 +67,8 @@ namespace Mooville::QUno::Bare
 
         void OnPointerPressed(IInspectable const &, PointerEventArgs const & args)
         {
+            Card card(winrt::Mooville::QUno::Model::Color::Red, Value::Five);
+
             float2 const point = args.CurrentPoint().Position();
 
             for (Visual visual : m_visuals)
@@ -114,7 +118,7 @@ namespace Mooville::QUno::Bare
             Compositor compositor = m_visuals.Compositor();
             SpriteVisual visual = compositor.CreateSpriteVisual();
 
-            static Color colors[] =
+            static Windows::UI::Color colors[] =
             {
                 { 0xDC, 0x5B, 0x9B, 0xD5 },
                 { 0xDC, 0xED, 0x7D, 0x31 },
@@ -152,7 +156,7 @@ namespace Mooville::QUno::Bare
 
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
-    CoreApplication::Run(make<Mooville::QUno::Bare::App>());
+    CoreApplication::Run(make<::Mooville::QUno::Bare::App>());
 
     return 0;
 }
