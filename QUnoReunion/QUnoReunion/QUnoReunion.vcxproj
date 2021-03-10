@@ -151,6 +151,11 @@
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QUnoComponent\QUnoComponent.vcxproj">
+      <Project>{e3500191-7f00-41af-b2b4-40fcdd7f1b8c}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\..\packages\Microsoft.Windows.CppWinRT.2.0.200921.6\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\..\packages\Microsoft.Windows.CppWinRT.2.0.200921.6\build\native\Microsoft.Windows.CppWinRT.targets')" />
