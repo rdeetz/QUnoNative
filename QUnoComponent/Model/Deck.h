@@ -26,6 +26,8 @@ namespace winrt::Mooville::QUno::Model::implementation
         Mooville::QUno::Model::Color _currentWildColor;
         Windows::Foundation::Collections::IVector<Mooville::QUno::Model::Card> _drawPile;
         Windows::Foundation::Collections::IVector<Mooville::QUno::Model::Card> _discardPile;
+        void ProvideCards();
+        uint32_t GetRandomIndex(uint32_t max);
     };
 }
 
