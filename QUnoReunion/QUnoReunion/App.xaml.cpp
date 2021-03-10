@@ -13,10 +13,6 @@ using namespace Microsoft::UI::Xaml::Navigation;
 using namespace Mooville::QUno::Reunion;
 using namespace Mooville::QUno::Reunion::implementation;
 
-/// <summary>
-/// Initializes the singleton application object.  This is the first line of authored code
-/// executed, and as such is the logical equivalent of main() or WinMain().
-/// </summary>
 App::App()
 {
     InitializeComponent();
@@ -34,25 +30,16 @@ App::App()
 #endif
 }
 
-/// <summary>
-/// Invoked when the application is launched normally by the end user.  Other entry points
-/// will be used such as when the application is launched to open a specific file.
-/// </summary>
-/// <param name="e">Details about the launch request and process.</param>
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
     window = make<MainWindow>();
     window.Activate();
+
+    return;
 }
 
-/// <summary>
-/// Invoked when application execution is being suspended.  Application state is saved
-/// without knowing whether the application will be terminated or resumed with the contents
-/// of memory still intact.
-/// </summary>
-/// <param name="sender">The source of the suspend request.</param>
-/// <param name="e">Details about the suspend request.</param>
 void App::OnSuspending([[maybe_unused]] IInspectable const& sender, [[maybe_unused]] Windows::ApplicationModel::SuspendingEventArgs const& e)
 {
-    // Save application state and stop any background activity
+    // TODO Save application state and stop any background activity.
+    return;
 }

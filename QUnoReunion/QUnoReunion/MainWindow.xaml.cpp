@@ -31,5 +31,6 @@ namespace winrt::Mooville::QUno::Reunion::implementation
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
+        return;
     }
 }
