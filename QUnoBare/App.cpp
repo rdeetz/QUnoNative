@@ -11,9 +11,9 @@ using namespace Windows::Foundation::Numerics;
 using namespace Windows::UI;
 using namespace Windows::UI::Core;
 using namespace Windows::UI::Composition;
-using namespace winrt::Mooville::QUno::Model;
+using namespace Mooville::QUno::Model;
 
-namespace Mooville::QUno::Bare
+namespace winrt::Mooville::QUno::Bare
 {
     struct FrameworkView : implements<FrameworkView, IFrameworkView>
     {
@@ -69,7 +69,7 @@ namespace Mooville::QUno::Bare
 
         void OnPointerPressed(IInspectable const&, PointerEventArgs const& args)
         {
-            //Card card(winrt::Mooville::QUno::Model::Color::Red, Value::Five);
+            Card card(Mooville::QUno::Model::Color::Red, Value::Five);
 
             float2 const point = args.CurrentPoint().Position();
 

@@ -6,9 +6,11 @@
 #if __has_include("MainWindow.g.cpp")
 #include "MainWindow.g.cpp"
 #endif
+#include "winrt/Mooville.QUno.Model.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
+using namespace Mooville::QUno::Model;
 
 namespace winrt::Mooville::QUno::Reunion::implementation
 {
@@ -31,6 +33,10 @@ namespace winrt::Mooville::QUno::Reunion::implementation
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
+
+        Card card(Color::Red, Value::Five);
+        textCard().Text(L"Red Five");
+
         return;
     }
 }
