@@ -6,9 +6,9 @@ An Uno-like card game.
 
 * Windows 10
 * [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk/)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.8)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.9)
 * [C++/WinRT Extension](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
-* [WinUI 3 Project Templates Extension](https://marketplace.visualstudio.com/items?itemName=Microsoft-WinUI.WinUIProjectTemplates)
+* [Project Reunion Extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftProjectReunion)
 * Your favorite editor (my favorite editor is [Visual Studio Code](https://code.visualstudio.com/))
 
 ## How To Play
