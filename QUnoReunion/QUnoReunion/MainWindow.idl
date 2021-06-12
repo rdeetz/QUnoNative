@@ -7,6 +7,5 @@ namespace Mooville.QUno.Reunion
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
-        Int32 MyProperty;
     }
 }

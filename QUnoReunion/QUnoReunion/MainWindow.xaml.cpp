@@ -20,22 +20,9 @@ namespace winrt::Mooville::QUno::Reunion::implementation
         Title(L"QUno");
     }
 
-    int32_t MainWindow::MyProperty()
+    void MainWindow::ButtonNew_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        throw hresult_not_implemented();
-    }
-
-    void MainWindow::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
-
-    void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
-
-        Card card(Color::Red, Value::Five);
-        textCard().Text(L"Red Five");
+        textMessage().Text(L"You are the winner!");
 
         return;
     }

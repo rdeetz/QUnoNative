@@ -13,11 +13,62 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-            <TextBlock x:Name="textCard"></TextBlock>
-        </StackPanel>
+        <CommandBar>
+            
+        </CommandBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <GridView/>
+            <ContentControl/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GridView/>
+                <StackPanel/>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock/>
+                <ListBox/>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    x:Name="buttonNewGame" 
+                    Content="Start a New Game"
+                    MinWidth="75" Margin="0,0,0,24" Padding="16" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="0" Grid.Column="0"
+                    Click="ButtonNew_Click"/>
+                <TextBlock 
+                    x:Name="textMessage"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="1" Grid.Column="0"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
