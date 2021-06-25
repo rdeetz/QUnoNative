@@ -58,11 +58,7 @@ namespace winrt::Mooville::QUno::Bare
 
             window.PointerPressed({ this, &FrameworkView::OnPointerPressed });
             window.PointerMoved({ this, &FrameworkView::OnPointerMoved });
-
-            window.PointerReleased([&](auto && ...)
-            {
-                _selected = nullptr;
-            });
+            window.PointerReleased({ this, &FrameworkView::OnPointerReleased });
 
             return;
         }
@@ -115,6 +111,13 @@ namespace winrt::Mooville::QUno::Bare
                     0.0f
                 });
             }
+
+            return;
+        }
+
+        void OnPointerReleased(IInspectable const&, PointerEventArgs const& args)
+        {
+            _selected = nullptr;
 
             return;
         }
