@@ -7,6 +7,7 @@
 #include "MainWindow.xaml.h"
 
 using namespace winrt;
+using namespace Windows::ApplicationModel;
 using namespace Windows::Foundation;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -35,5 +36,10 @@ void App::OnLaunched(LaunchActivatedEventArgs const&)
     window = make<MainWindow>();
     window.Activate();
 
+    return;
+}
+
+void App::OnSuspending(IInspectable const&, SuspendingEventArgs const&)
+{
     return;
 }

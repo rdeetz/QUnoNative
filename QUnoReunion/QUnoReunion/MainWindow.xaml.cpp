@@ -15,12 +15,12 @@ namespace winrt::Mooville::QUno::Reunion::implementation
     MainWindow::MainWindow()
     {
         InitializeComponent();
+
+        Title(L"QUno");
     }
 
-    void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
+    void MainWindow::ButtonSettings_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
-
         return;
     }
 }

@@ -6,7 +6,23 @@
     xmlns:local="using:Mooville.QUno.Reunion"
     mc:Ignorable="d"
     x:Class="Mooville.QUno.Reunion.MainWindow">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right" Grid.Row="0" Grid.Column="0">
+            <AppBarButton x:Name="buttonSettings" Label="Settings" AccessKey="T" Click="ButtonSettings_Click">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE115;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <GridView/>
+        </Grid>
+    </Grid>
 </Window>
