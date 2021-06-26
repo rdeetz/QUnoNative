@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoReunion - App.xaml.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #pragma push_macro("GetCurrentTime")
 #undef GetCurrentTime
@@ -17,6 +20,6 @@ namespace winrt::QUnoReunion::implementation
         void OnSuspending(IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&);
 
     private:
-        winrt::Microsoft::UI::Xaml::Window window{ nullptr };
+        winrt::Microsoft::UI::Xaml::Window window { nullptr };
     };
 }
