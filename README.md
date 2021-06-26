@@ -4,11 +4,11 @@ An Uno-like card game.
 
 ## Requirements
 
-* Windows 10
+* Windows 10 (11?)
 * [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk/)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.9)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.10)
 * [C++/WinRT Extension](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
-* [Project Reunion Extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftProjectReunion)
+* [Windows App SDK Extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftProjectReunion)
 * Your favorite editor (my favorite editor is [Visual Studio Code](https://code.visualstudio.com/))
 
 ## How To Play
