@@ -1,7 +1,7 @@
 // QUnoReunion - MainWindow.idl
 // 2021 Roger Deetz
 
-namespace QUnoReunion
+namespace Mooville.QUno.Reunion
 {
     [default_interface]
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window

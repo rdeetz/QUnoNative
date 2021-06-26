@@ -10,7 +10,7 @@
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
-namespace winrt::QUnoReunion::implementation
+namespace winrt::Mooville::QUno::Reunion::implementation
 {
     MainWindow::MainWindow()
     {

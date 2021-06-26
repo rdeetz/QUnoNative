@@ -10,7 +10,7 @@
     <MinimalCoreWin>true</MinimalCoreWin>
     <ProjectGuid>{ca765631-4fea-423b-bf78-63a405a0d3fd}</ProjectGuid>
     <ProjectName>QUnoReunion</ProjectName>
-    <RootNamespace>QUnoReunion</RootNamespace>
+    <RootNamespace>Mooville.QUno.Reunion</RootNamespace>
     <!--
       $(TargetName) should be same as $(RootNamespace) so that the produced binaries (.exe/.pri/etc.)
       have a name that matches the .winmd

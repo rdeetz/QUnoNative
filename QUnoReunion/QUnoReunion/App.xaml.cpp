@@ -11,8 +11,8 @@ using namespace Windows::Foundation;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
-using namespace QUnoReunion;
-using namespace QUnoReunion::implementation;
+using namespace Mooville::QUno::Reunion;
+using namespace Mooville::QUno::Reunion::implementation;
 
 App::App()
 {

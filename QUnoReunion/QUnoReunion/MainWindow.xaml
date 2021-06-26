@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:QUnoReunion"
+    xmlns:local="using:Mooville.QUno.Reunion"
     mc:Ignorable="d"
-    x:Class="QUnoReunion.MainWindow">
+    x:Class="Mooville.QUno.Reunion.MainWindow">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
     </StackPanel>

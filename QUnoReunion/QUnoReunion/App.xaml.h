@@ -10,7 +10,7 @@
 
 #pragma pop_macro("GetCurrentTime")
 
-namespace winrt::QUnoReunion::implementation
+namespace winrt::Mooville::QUno::Reunion::implementation
 {
     struct App : AppT<App>
     {
