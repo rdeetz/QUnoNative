@@ -3,7 +3,9 @@
 [Xx]64/
 packages/
 .vs/
+.vscode/
 *.user
 *.pfx
 *.filters
 Generated Files/
+AppPackages/
