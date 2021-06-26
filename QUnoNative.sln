@@ -9,10 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoBare", "QUnoBare\QUnoBa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoComponent", "QUnoComponent\QUnoComponent.vcxproj", "{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}"
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "QUnoReunion (Package)", "QUnoReunion\QUnoReunion (Package)\QUnoReunion (Package).wapproj", "{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoReunion", "QUnoReunion\QUnoReunion\QUnoReunion.vcxproj", "{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -89,40 +85,6 @@ Global
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x64.Build.0 = Release|x64
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x86.ActiveCfg = Release|Win32
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x86.Build.0 = Release|Win32
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|ARM.ActiveCfg = Debug|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|arm64.ActiveCfg = Debug|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|arm64.Build.0 = Debug|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|arm64.Deploy.0 = Debug|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x64.ActiveCfg = Debug|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x64.Build.0 = Debug|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x64.Deploy.0 = Debug|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x86.ActiveCfg = Debug|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x86.Build.0 = Debug|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Debug|x86.Deploy.0 = Debug|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|ARM.ActiveCfg = Release|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|arm64.ActiveCfg = Release|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|arm64.Build.0 = Release|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|arm64.Deploy.0 = Release|arm64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x64.ActiveCfg = Release|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x64.Build.0 = Release|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x64.Deploy.0 = Release|x64
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x86.ActiveCfg = Release|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x86.Build.0 = Release|x86
-		{B6A96D80-DC39-4A11-AB00-F1E30240A4DD}.Release|x86.Deploy.0 = Release|x86
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|ARM.ActiveCfg = Debug|Win32
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|arm64.ActiveCfg = Debug|arm64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|arm64.Build.0 = Debug|arm64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|x64.ActiveCfg = Debug|x64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|x64.Build.0 = Debug|x64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|x86.ActiveCfg = Debug|Win32
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Debug|x86.Build.0 = Debug|Win32
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|ARM.ActiveCfg = Release|Win32
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|arm64.ActiveCfg = Release|arm64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|arm64.Build.0 = Release|arm64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|x64.ActiveCfg = Release|x64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|x64.Build.0 = Release|x64
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|x86.ActiveCfg = Release|Win32
-		{5E3EFAD5-2A8D-4D4A-BFEE-CB92D3F091E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
