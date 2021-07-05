@@ -36,6 +36,15 @@ void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTAT
     */
 }
 
+// Creates and initializes the renderers.
+void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
+{
+    // TODO: Replace this with your app's content initialization.
+    //m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+
+    //OnWindowSizeChanged();
+}
+
 #pragma region Frame Update
 // Executes the basic game loop.
 void Game::Tick()

@@ -5,7 +5,7 @@
 
 #include "Common/DeviceResources.h"
 #include "Common/StepTimer.h"
-
+//#include "Content/Sample3DSceneRenderer.h"
 
 // A basic game implementation that creates a D3D12 device and
 // provides a game loop.
@@ -24,6 +24,8 @@ public:
 
     // Initialization and management
     void Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation);
+
+    void CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 
     // Basic game loop
     void Tick();
@@ -55,6 +57,9 @@ private:
 
     // Device resources.
     std::unique_ptr<DX::DeviceResources>    m_deviceResources;
+    
+    // TODO: Replace with your own content renderers.
+    //std::unique_ptr<Sample3DSceneRenderer> m_sceneRenderer;
 
     // Rendering loop timer.
     DX::StepTimer                           m_timer;
