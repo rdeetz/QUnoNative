@@ -8,6 +8,7 @@
 extern void ExitGame() noexcept;
 
 using namespace DirectX;
+using namespace Mooville::QUno::Direct;
 
 using Microsoft::WRL::ComPtr;
 
