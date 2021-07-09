@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "Common/DeviceResources.h"
+//#include "Common/DeviceResources.h"
 #include "Common/StepTimer.h"
 //#include "Content/Sample3DSceneRenderer.h"
 
@@ -27,7 +27,7 @@ namespace Mooville::QUno::Direct
         // Initialization and management
         void Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation);
 
-        void CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources);
+        //void CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 
         // Basic game loop
         void Tick();
@@ -58,7 +58,7 @@ namespace Mooville::QUno::Direct
         void CreateWindowSizeDependentResources();
 
         // Device resources.
-        std::unique_ptr<DX::DeviceResources>    m_deviceResources;
+        //std::unique_ptr<DX::DeviceResources>    m_deviceResources;
 
         // TODO: Replace with your own content renderers.
         //std::unique_ptr<Sample3DSceneRenderer> m_sceneRenderer;

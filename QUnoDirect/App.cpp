@@ -4,7 +4,7 @@
 #include "pch.h"
 
 #include "App.h"
-//#include "Game.h"
+#include "Game.h"
 
 using namespace winrt::Windows::ApplicationModel;
 using namespace winrt::Windows::ApplicationModel::Core;
@@ -42,12 +42,12 @@ namespace Mooville::QUno::Direct
 
             CoreApplication::Resuming({ this, &App::OnResuming });
 
-            //m_game = std::make_unique<Game>();
+            m_game = std::make_unique<Game>();
         }
 
         void Uninitialize() noexcept
         {
-            //m_game.reset();
+            m_game.reset();
             return;
         }
 
@@ -108,7 +108,7 @@ namespace Mooville::QUno::Direct
             }
 
             auto windowPtr = static_cast<::IUnknown*>(winrt::get_abi(window));
-            //m_game->Initialize(windowPtr, outputWidth, outputHeight, rotation);
+            m_game->Initialize(windowPtr, outputWidth, outputHeight, rotation);
         }
 
         void Load(winrt::hstring const&) noexcept
@@ -121,7 +121,7 @@ namespace Mooville::QUno::Direct
             {
                 if (m_visible)
                 {
-                    //m_game->Tick();
+                    m_game->Tick();
 
                     CoreWindow::GetForCurrentThread().Dispatcher().ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
                 }
@@ -148,9 +148,7 @@ namespace Mooville::QUno::Direct
             }
 
             int w, h;
-            //m_game->GetDefaultSize(w, h);
-            w = 1024;
-            h = 768;
+            m_game->GetDefaultSize(w, h);
 
             m_DPI = DisplayInformation::GetForCurrentView().LogicalDpi();
 
@@ -182,7 +180,7 @@ namespace Mooville::QUno::Direct
 
             auto f = std::async(std::launch::async, [this, deferral]()
                 {
-                    //m_game->OnSuspending();
+                    m_game->OnSuspending();
 
                     deferral.Complete();
                 });
@@ -192,7 +190,7 @@ namespace Mooville::QUno::Direct
 
         void OnResuming(IInspectable const&, IInspectable const&)
         {
-            //m_game->OnResuming();
+            m_game->OnResuming();
             return;
         }
 
@@ -210,12 +208,10 @@ namespace Mooville::QUno::Direct
         void OnVisibilityChanged(CoreWindow const&, VisibilityChangedEventArgs const& args)
         {
             m_visible = args.Visible();
-            /*
             if (m_visible)
                 m_game->OnActivated();
             else
                 m_game->OnDeactivated();
-            */
         }
 
         void OnAcceleratorKeyActivated(CoreDispatcher const&, AcceleratorKeyEventArgs const& args)
@@ -258,7 +254,7 @@ namespace Mooville::QUno::Direct
 
         void OnDisplayContentsInvalidated(DisplayInformation const&, IInspectable const&)
         {
-            //m_game->ValidateDevice();
+            m_game->ValidateDevice();
         }
 
     private:
@@ -268,7 +264,7 @@ namespace Mooville::QUno::Direct
         float                   m_DPI;
         float                   m_logicalWidth;
         float                   m_logicalHeight;
-        //std::unique_ptr<Game>   m_game;
+        std::unique_ptr<Game>   m_game;
 
         winrt::Windows::Graphics::Display::DisplayOrientations	m_nativeOrientation;
         winrt::Windows::Graphics::Display::DisplayOrientations	m_currentOrientation;
@@ -347,7 +343,7 @@ namespace Mooville::QUno::Direct
                 std::swap(outputWidth, outputHeight);
             }
 
-            //m_game->OnWindowSizeChanged(outputWidth, outputHeight, rotation);
+            m_game->OnWindowSizeChanged(outputWidth, outputHeight, rotation);
         }
     };
 
