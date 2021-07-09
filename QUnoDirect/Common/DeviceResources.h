@@ -3,11 +3,14 @@
 
 #pragma once
 
+//#include <wrl/client.h>
+//#include <wrl/event.h>
+
 namespace DX
 {
     static const UINT c_frameCount = 3;		// Use triple buffering.
 
-    using namespace winrt::Windows::Foundation;
+    //using namespace winrt::Windows::Foundation;
 
     // Function that reads from a binary file asynchronously.
     /*

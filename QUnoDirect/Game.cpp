@@ -10,24 +10,22 @@ extern void ExitGame() noexcept;
 using namespace DirectX;
 using namespace Mooville::QUno::Direct;
 
-//using Microsoft::WRL::ComPtr;
-
 Game::Game() noexcept(false)
 {
-    //m_deviceResources = std::make_unique<DX::DeviceResources>();
-    //m_deviceResources->RegisterDeviceNotify(this);
+    m_deviceResources = std::make_unique<DX::DeviceResources>();
+    m_deviceResources->RegisterDeviceNotify(this);
 }
 
 // Initialize the Direct3D resources required to run.
 void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation)
 {
-    //m_deviceResources->SetWindow(window, width, height, rotation);
+    m_deviceResources->SetWindow(window, width, height, rotation);
 
-    //m_deviceResources->CreateDeviceResources();
-    //CreateDeviceDependentResources();
+    m_deviceResources->CreateDeviceResources();
+    CreateDeviceDependentResources();
 
-    //m_deviceResources->CreateWindowSizeDependentResources();
-    //CreateWindowSizeDependentResources();
+    m_deviceResources->CreateWindowSizeDependentResources();
+    CreateWindowSizeDependentResources();
 
     // TODO: Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
@@ -38,13 +36,13 @@ void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTAT
 }
 
 // Creates and initializes the renderers.
-//void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
-//{
-//    // TODO: Replace this with your app's content initialization.
-//    //m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
-//
-//    //OnWindowSizeChanged();
-//}
+void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
+{
+    // TODO: Replace this with your app's content initialization.
+    //m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+
+    //OnWindowSizeChanged();
+}
 
 #pragma region Frame Update
 // Executes the basic game loop.
@@ -83,43 +81,43 @@ void Game::Render()
     }
 
     // Prepare the command list to render a new frame.
-    //m_deviceResources->Prepare();
-    //Clear();
+    m_deviceResources->Prepare();
+    Clear();
 
-    //auto commandList = m_deviceResources->GetCommandList();
-    //PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Render");
+    auto commandList = m_deviceResources->GetCommandList();
+    PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Render");
 
-    //// TODO: Add your rendering code here.
+    // TODO: Add your rendering code here.
 
-    //PIXEndEvent(commandList);
+    PIXEndEvent(commandList);
 
-    //// Show the new frame.
-    //PIXBeginEvent(m_deviceResources->GetCommandQueue(), PIX_COLOR_DEFAULT, L"Present");
-    //m_deviceResources->Present();
-    //PIXEndEvent(m_deviceResources->GetCommandQueue());
+    // Show the new frame.
+    PIXBeginEvent(m_deviceResources->GetCommandQueue(), PIX_COLOR_DEFAULT, L"Present");
+    m_deviceResources->Present();
+    PIXEndEvent(m_deviceResources->GetCommandQueue());
 }
 
 // Helper method to clear the back buffers.
 void Game::Clear()
 {
-    //auto commandList = m_deviceResources->GetCommandList();
-    //PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Clear");
+    auto commandList = m_deviceResources->GetCommandList();
+    PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Clear");
 
-    //// Clear the views.
-    //auto rtvDescriptor = m_deviceResources->GetRenderTargetView();
-    //auto dsvDescriptor = m_deviceResources->GetDepthStencilView();
+    // Clear the views.
+    auto rtvDescriptor = m_deviceResources->GetRenderTargetView();
+    auto dsvDescriptor = m_deviceResources->GetDepthStencilView();
 
-    //commandList->OMSetRenderTargets(1, &rtvDescriptor, FALSE, &dsvDescriptor);
-    //commandList->ClearRenderTargetView(rtvDescriptor, Colors::CornflowerBlue, 0, nullptr);
-    //commandList->ClearDepthStencilView(dsvDescriptor, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
+    commandList->OMSetRenderTargets(1, &rtvDescriptor, FALSE, &dsvDescriptor);
+    commandList->ClearRenderTargetView(rtvDescriptor, Colors::CornflowerBlue, 0, nullptr);
+    commandList->ClearDepthStencilView(dsvDescriptor, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 
-    //// Set the viewport and scissor rect.
-    //auto viewport = m_deviceResources->GetScreenViewport();
-    //auto scissorRect = m_deviceResources->GetScissorRect();
-    //commandList->RSSetViewports(1, &viewport);
-    //commandList->RSSetScissorRects(1, &scissorRect);
+    // Set the viewport and scissor rect.
+    auto viewport = m_deviceResources->GetScreenViewport();
+    auto scissorRect = m_deviceResources->GetScissorRect();
+    commandList->RSSetViewports(1, &viewport);
+    commandList->RSSetScissorRects(1, &scissorRect);
 
-    //PIXEndEvent(commandList);
+    PIXEndEvent(commandList);
 }
 #pragma endregion
 
@@ -149,8 +147,8 @@ void Game::OnResuming()
 
 void Game::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
 {
-    //if (!m_deviceResources->WindowSizeChanged(width, height, rotation))
-    //    return;
+    if (!m_deviceResources->WindowSizeChanged(width, height, rotation))
+        return;
 
     CreateWindowSizeDependentResources();
 
@@ -159,7 +157,7 @@ void Game::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotatio
 
 void Game::ValidateDevice()
 {
-    //m_deviceResources->ValidateDevice();
+    m_deviceResources->ValidateDevice();
 }
 
 // Properties
@@ -175,18 +173,18 @@ void Game::GetDefaultSize(int& width, int& height) const noexcept
 // These are the resources that depend on the device.
 void Game::CreateDeviceDependentResources()
 {
-//    auto device = m_deviceResources->GetD3DDevice();
-//
-//    // Check Shader Model 6 support
-//    D3D12_FEATURE_DATA_SHADER_MODEL shaderModel = { D3D_SHADER_MODEL_6_0 };
-//    if (FAILED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &shaderModel, sizeof(shaderModel)))
-//        || (shaderModel.HighestShaderModel < D3D_SHADER_MODEL_6_0))
-//    {
-//#ifdef _DEBUG
-//        OutputDebugStringA("ERROR: Shader Model 6.0 is not supported!\n");
-//#endif
-//        throw std::runtime_error("Shader Model 6.0 is not supported!");
-//    }
+    auto device = m_deviceResources->GetD3DDevice();
+
+    // Check Shader Model 6 support
+    D3D12_FEATURE_DATA_SHADER_MODEL shaderModel = { D3D_SHADER_MODEL_6_0 };
+    if (FAILED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &shaderModel, sizeof(shaderModel)))
+        || (shaderModel.HighestShaderModel < D3D_SHADER_MODEL_6_0))
+    {
+#ifdef _DEBUG
+        OutputDebugStringA("ERROR: Shader Model 6.0 is not supported!\n");
+#endif
+        throw std::runtime_error("Shader Model 6.0 is not supported!");
+    }
 
     // TODO: Initialize device dependent objects here (independent of window size).
 }

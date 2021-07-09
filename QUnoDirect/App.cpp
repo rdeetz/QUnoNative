@@ -17,6 +17,8 @@ using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::Graphics::Display;
 using namespace DirectX;
 
+//using namespace Microsoft::WRL;
+
 namespace Mooville::QUno::Direct
 {
     class App : public winrt::implements<App, IFrameworkView>
