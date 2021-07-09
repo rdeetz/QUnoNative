@@ -10,6 +10,7 @@ namespace DX
     using namespace winrt::Windows::Foundation;
 
     // Function that reads from a binary file asynchronously.
+    /*
     inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
     {
         using namespace winrt::Windows::ApplicationModel;
@@ -27,7 +28,6 @@ namespace DX
 
         co_return returnBuffer;
 
-        /*
         return create_task(
                 // get a file via IAsync given a file name from the installed location folder
                 folder->GetFileAsync(Platform::StringReference(filename.c_str()))
@@ -43,8 +43,8 @@ namespace DX
                     Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
                     return returnBuffer;
                 });
-                */
     }
+    */
 
     // Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
     inline float ConvertDipsToPixels(float dips, float dpi)

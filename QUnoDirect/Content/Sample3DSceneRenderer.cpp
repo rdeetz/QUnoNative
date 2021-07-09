@@ -380,6 +380,7 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 // Saves the current state of the renderer.
 void Sample3DSceneRenderer::SaveState()
 {
+	/*
 	auto state = ApplicationData::Current().LocalSettings().Values();
 
 	if (state.HasKey(AngleKey))
@@ -393,11 +394,13 @@ void Sample3DSceneRenderer::SaveState()
 
 	state.Insert(AngleKey, PropertyValue::CreateSingle(m_angle));
 	state.Insert(TrackingKey, PropertyValue::CreateBoolean(m_tracking));
+	*/
 }
 
 // Restores the previous state of the renderer.
 void Sample3DSceneRenderer::LoadState()
 {
+	/*
 	auto state = ApplicationData::Current().LocalSettings().Values();
 	if (state.HasKey(AngleKey))
 	{
@@ -409,6 +412,7 @@ void Sample3DSceneRenderer::LoadState()
 		m_tracking = state.Lookup(TrackingKey).as<IPropertyValue>().GetBoolean();
 		state.Remove(TrackingKey);
 	}
+	*/
 }
 
 // Rotate the 3D cube model a set amount of radians.
