@@ -119,7 +119,7 @@ void DeviceResources::CreateDeviceResources()
     //
     // NOTE: Enabling the debug layer after device creation will invalidate the active device.
     {
-        ComPtr<ID3D12Debug> debugController;
+        Microsoft::WRL::ComPtr<ID3D12Debug> debugController;
         if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(debugController.GetAddressOf()))))
         {
             debugController->EnableDebugLayer();
@@ -129,7 +129,7 @@ void DeviceResources::CreateDeviceResources()
             OutputDebugStringA("WARNING: Direct3D Debug Device is not available\n");
         }
 
-        ComPtr<IDXGIInfoQueue> dxgiInfoQueue;
+        Microsoft::WRL::ComPtr<IDXGIInfoQueue> dxgiInfoQueue;
         if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(dxgiInfoQueue.GetAddressOf()))))
         {
             m_dxgiFactoryFlags = DXGI_CREATE_FACTORY_DEBUG;
@@ -149,14 +149,14 @@ void DeviceResources::CreateDeviceResources()
     }
 #endif
 
-    ThrowIfFailed(CreateDXGIFactory2(m_dxgiFactoryFlags, IID_PPV_ARGS(m_dxgiFactory.ReleaseAndGetAddressOf())));
+    DX::ThrowIfFailed(CreateDXGIFactory2(m_dxgiFactoryFlags, IID_PPV_ARGS(m_dxgiFactory.ReleaseAndGetAddressOf())));
 
     // Determines whether tearing support is available for fullscreen borderless windows.
     if (m_options & c_AllowTearing)
     {
         BOOL allowTearing = FALSE;
 
-        ComPtr<IDXGIFactory5> factory5;
+        Microsoft::WRL::ComPtr<IDXGIFactory5> factory5;
         HRESULT hr = m_dxgiFactory.As(&factory5);
         if (SUCCEEDED(hr))
         {
@@ -172,7 +172,7 @@ void DeviceResources::CreateDeviceResources()
         }
     }
 
-    ComPtr<IDXGIAdapter1> adapter;
+    Microsoft::WRL::ComPtr<IDXGIAdapter1> adapter;
     GetAdapter(adapter.GetAddressOf());
 
     // Create the DX12 API device object.
@@ -186,7 +186,7 @@ void DeviceResources::CreateDeviceResources()
 
 #ifndef NDEBUG
     // Configure debug device (if active).
-    ComPtr<ID3D12InfoQueue> d3dInfoQueue;
+    Microsoft::WRL::ComPtr<ID3D12InfoQueue> d3dInfoQueue;
     if (SUCCEEDED(m_d3dDevice.As(&d3dInfoQueue)))
     {
 #ifdef _DEBUG
@@ -365,7 +365,7 @@ void DeviceResources::CreateWindowSizeDependentResources()
         swapChainDesc.Flags = (m_options & c_AllowTearing) ? DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING : 0u;
 
         // Create a swap chain for the window.
-        ComPtr<IDXGISwapChain1> swapChain;
+        Microsoft::WRL::ComPtr<IDXGISwapChain1> swapChain;
         ThrowIfFailed(m_dxgiFactory->CreateSwapChainForCoreWindow(
             m_commandQueue.Get(),
             m_window,
@@ -478,7 +478,7 @@ void DeviceResources::CreateWindowSizeDependentResources()
 }
 
 // This method is called when the CoreWindow is created (or re-created).
-void DeviceResources::SetWindow(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation) noexcept
+void DeviceResources::SetWindow(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation) noexcept
 {
     m_window = window;
 

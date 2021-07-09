@@ -3,20 +3,21 @@
 
 #include "pch.h"
 #include "Sample3DSceneRenderer.h"
-#include "..\Common\DirectXHelper.h"
-#include <ppltasks.h>
+//#include "..\Common\DirectXHelper.h"
+//#include <ppltasks.h>
 #include <synchapi.h>
 
-using namespace Concurrency;
+//using namespace Concurrency;
 using namespace DirectX;
 using namespace Microsoft::WRL;
-using namespace Windows::Foundation;
-using namespace Windows::Storage;
+using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::Storage;
 using namespace Mooville::QUno::Direct;
+using namespace DX;
 
 // Indices into the application state map.
-Platform::String^ AngleKey = "Angle";
-Platform::String^ TrackingKey = "Tracking";
+winrt::hstring AngleKey = L"Angle";
+winrt::hstring TrackingKey = L"Tracking";
 
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
 Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
@@ -42,6 +43,7 @@ Sample3DSceneRenderer::~Sample3DSceneRenderer()
 
 void Sample3DSceneRenderer::CreateDeviceDependentResources()
 {
+	/*
 	auto d3dDevice = m_deviceResources->GetD3DDevice();
 
 	// Create a root signature with a single constant buffer slot.
@@ -80,6 +82,12 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 	// Create the pipeline state once the shaders are loaded.
 	auto createPipelineStateTask = (createPSTask && createVSTask).then([this]() {
+
+		std::vector<byte>& fileData = DX::ReadDataAsync(L"SampleVertexShader.cso");
+		m_vertexShader = fileData;
+
+		std::vector<byte>& fileData = DX::ReadDataAsync(L"SamplePixelShader.cso");
+		m_pixelShader = fileData;
 
 		static const D3D12_INPUT_ELEMENT_DESC inputLayout[] =
 		{
@@ -300,13 +308,14 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 	createAssetsTask.then([this]() {
 		m_loadingComplete = true;
 	});
+	*/
 }
 
 // Initializes view parameters when the window size changes.
 void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 {
-	Size outputSize = m_deviceResources->GetOutputSize();
-	float aspectRatio = outputSize.Width / outputSize.Height;
+	RECT outputSize = m_deviceResources->GetOutputSize();
+	float aspectRatio = (outputSize.right - outputSize.left) / (outputSize.bottom - outputSize.top);
 	float fovAngleY = 70.0f * XM_PI / 180.0f;
 
 	D3D12_VIEWPORT viewport = m_deviceResources->GetScreenViewport();
@@ -371,34 +380,34 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 // Saves the current state of the renderer.
 void Sample3DSceneRenderer::SaveState()
 {
-	auto state = ApplicationData::Current->LocalSettings->Values;
+	auto state = ApplicationData::Current().LocalSettings().Values();
 
-	if (state->HasKey(AngleKey))
+	if (state.HasKey(AngleKey))
 	{
-		state->Remove(AngleKey);
+		state.Remove(AngleKey);
 	}
-	if (state->HasKey(TrackingKey))
+	if (state.HasKey(TrackingKey))
 	{
-		state->Remove(TrackingKey);
+		state.Remove(TrackingKey);
 	}
 
-	state->Insert(AngleKey, PropertyValue::CreateSingle(m_angle));
-	state->Insert(TrackingKey, PropertyValue::CreateBoolean(m_tracking));
+	state.Insert(AngleKey, PropertyValue::CreateSingle(m_angle));
+	state.Insert(TrackingKey, PropertyValue::CreateBoolean(m_tracking));
 }
 
 // Restores the previous state of the renderer.
 void Sample3DSceneRenderer::LoadState()
 {
-	auto state = ApplicationData::Current->LocalSettings->Values;
-	if (state->HasKey(AngleKey))
+	auto state = ApplicationData::Current().LocalSettings().Values();
+	if (state.HasKey(AngleKey))
 	{
-		m_angle = safe_cast<IPropertyValue^>(state->Lookup(AngleKey))->GetSingle();
-		state->Remove(AngleKey);
+		m_angle = state.Lookup(AngleKey).as<IPropertyValue>().GetSingle();
+		state.Remove(AngleKey);
 	}
-	if (state->HasKey(TrackingKey))
+	if (state.HasKey(TrackingKey))
 	{
-		m_tracking = safe_cast<IPropertyValue^>(state->Lookup(TrackingKey))->GetBoolean();
-		state->Remove(TrackingKey);
+		m_tracking = state.Lookup(TrackingKey).as<IPropertyValue>().GetBoolean();
+		state.Remove(TrackingKey);
 	}
 }
 
@@ -419,7 +428,7 @@ void Sample3DSceneRenderer::TrackingUpdate(float positionX)
 {
 	if (m_tracking)
 	{
-		float radians = XM_2PI * 2.0f * positionX / m_deviceResources->GetOutputSize().Width;
+		float radians = XM_2PI * 2.0f * positionX / (m_deviceResources->GetOutputSize().right - m_deviceResources->GetOutputSize().left);
 		Rotate(radians);
 	}
 }

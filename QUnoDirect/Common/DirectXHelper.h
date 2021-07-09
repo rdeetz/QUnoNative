@@ -15,7 +15,7 @@ namespace DX
 			throw Platform::Exception::CreateException(hr);
 		}
 	}
-
+	/*
 	// Function that reads from a binary file asynchronously.
 	inline Concurrency::task<std::vector<byte>> ReadDataAsync(const std::wstring& filename)
 	{
@@ -35,6 +35,7 @@ namespace DX
 			return returnBuffer;
 		});
 	}
+	*/
 
 	// Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
 	inline float ConvertDipsToPixels(float dips, float dpi)

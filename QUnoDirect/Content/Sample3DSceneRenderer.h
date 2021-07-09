@@ -49,8 +49,8 @@ namespace Mooville::QUno::Direct
         UINT8* m_mappedConstantBuffer;
         UINT												m_cbvDescriptorSize;
         D3D12_RECT											m_scissorRect;
-        std::vector<__int8>									m_vertexShader;
-        std::vector<__int8>									m_pixelShader;
+        std::vector<byte>									m_vertexShader;
+        std::vector<byte>									m_pixelShader;
         D3D12_VERTEX_BUFFER_VIEW							m_vertexBufferView;
         D3D12_INDEX_BUFFER_VIEW								m_indexBufferView;
 

@@ -5,6 +5,66 @@
 
 namespace DX
 {
+    static const UINT c_frameCount = 3;		// Use triple buffering.
+
+    using namespace winrt::Windows::Foundation;
+
+    // Function that reads from a binary file asynchronously.
+    inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
+    {
+        using namespace winrt::Windows::ApplicationModel;
+        using namespace winrt::Windows::Storage;
+        using namespace winrt::Windows::Storage::Streams;
+
+        auto folder = Package::Current().InstalledLocation();
+        auto file = co_await folder.GetFileAsync(filename);
+        auto fileBuffer = co_await FileIO::ReadBufferAsync(file);
+        std::vector<byte> returnBuffer;
+        returnBuffer.resize(fileBuffer.Length());
+        DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
+        //auto dataReader = DataReader::FromBuffer(fileBuffer);
+        //dataReader.ReadBytes(returnBuffer.data());
+
+        co_return returnBuffer;
+
+        /*
+        return create_task(
+                // get a file via IAsync given a file name from the installed location folder
+                folder->GetFileAsync(Platform::StringReference(filename.c_str()))
+            ).then([](StorageFile^ file)
+            {
+                // This returns an IAsync that returns a buffer
+                return FileIO::ReadBufferAsync(file);
+            }).then([](Streams::IBuffer^ fileBuffer) -> std::vector<byte>
+                {
+                    // This takes a file buffer, reads the bytes and copies them to an array which is then returned
+                    std::vector<byte> returnBuffer;
+                    returnBuffer.resize(fileBuffer->Length);
+                    Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
+                    return returnBuffer;
+                });
+                */
+    }
+
+    // Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
+    inline float ConvertDipsToPixels(float dips, float dpi)
+    {
+        static const float dipsPerInch = 96.0f;
+        return floorf(dips * dpi / dipsPerInch + 0.5f); // Round to nearest integer.
+    }
+
+    // Assign a name to the object to aid with debugging.
+#if defined(_DEBUG)
+    inline void SetName(ID3D12Object* pObject, LPCWSTR name)
+    {
+        pObject->SetName(name);
+    }
+#else
+    inline void SetName(ID3D12Object*, LPCWSTR)
+    {
+    }
+#endif
+
     // Provides an interface for an application that owns DeviceResources to be notified of the device being lost or created.
     interface IDeviceNotify
     {
@@ -37,7 +97,7 @@ namespace DX
 
         void CreateDeviceResources();
         void CreateWindowSizeDependentResources();
-        void SetWindow(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation) noexcept;
+        void SetWindow(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation) noexcept;
         bool WindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation);
         void ValidateDevice();
         void HandleDeviceLost();
@@ -46,6 +106,12 @@ namespace DX
             D3D12_RESOURCE_STATES afterState = D3D12_RESOURCE_STATE_RENDER_TARGET);
         void Present(D3D12_RESOURCE_STATES beforeState = D3D12_RESOURCE_STATE_RENDER_TARGET);
         void WaitForGpu() noexcept;
+
+        // The size of the render target, in pixels.
+        //RECT	GetOutputSize() const { return m_outputSize; }
+
+        // The size of the render target, in dips.
+        //Windows::Foundation::Size	GetLogicalSize() const { return m_logicalSize; }
 
         // Device Accessors.
         RECT GetOutputSize() const noexcept { return m_outputSize; }
@@ -89,7 +155,7 @@ namespace DX
 
         static const size_t MAX_BACK_BUFFER_COUNT = 3;
 
-        UINT                                                m_backBufferIndex;
+        UINT                                        m_backBufferIndex;
 
         // Direct3D objects.
         Microsoft::WRL::ComPtr<ID3D12Device>                m_d3dDevice;
@@ -122,7 +188,7 @@ namespace DX
         D3D_FEATURE_LEVEL                                   m_d3dMinFeatureLevel;
 
         // Cached device properties.
-        IUnknown* m_window;
+        ::IUnknown* m_window;
         D3D_FEATURE_LEVEL                                   m_d3dFeatureLevel;
         DXGI_MODE_ROTATION                                  m_rotation;
         DWORD                                               m_dxgiFactoryFlags;
@@ -141,6 +207,10 @@ namespace DX
         IDeviceNotify* m_deviceNotify;
     };
 }
+
+// Naming helper function for ComPtr<T>.
+// Assigns the name of the variable as the name of the object.
+#define NAME_D3D12_OBJECT(x) DX::SetName(x.Get(), L#x)
 
 /*
 namespace DX
