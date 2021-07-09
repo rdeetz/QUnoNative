@@ -5,7 +5,7 @@
 #include "Sample3DSceneRenderer.h"
 //#include "..\Common\DirectXHelper.h"
 //#include <ppltasks.h>
-#include <synchapi.h>
+//#include <synchapi.h>
 
 //using namespace Concurrency;
 using namespace DirectX;
