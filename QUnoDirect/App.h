@@ -3,62 +3,82 @@
 
 #pragma once
 
-/*
 #include "pch.h"
-#include "Common\DeviceResources.h"
-#include "QUnoDirectMain.h"
+#include "Game.h"
 
-namespace Mooville
+using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::ApplicationModel;
+using namespace winrt::Windows::ApplicationModel::Core;
+using namespace winrt::Windows::ApplicationModel::Activation;
+using namespace winrt::Windows::UI::Core;
+using namespace winrt::Windows::Graphics::Display;
+using namespace DirectX;
+using namespace Mooville::QUno::Direct;
+
+namespace Mooville::QUno::Direct
 {
-    namespace QUno
+    class FrameworkViewSource : public winrt::implements<FrameworkViewSource, IFrameworkViewSource>
     {
-        namespace Direct
-        {
-            // Main entry point for our app. Connects the app with the Windows shell and handles application lifecycle events.
-            ref class App sealed : public Windows::ApplicationModel::Core::IFrameworkView
-            {
-            public:
-                App();
-
-                // IFrameworkView methods.
-                virtual void Initialize(Windows::ApplicationModel::Core::CoreApplicationView^ applicationView);
-                virtual void SetWindow(Windows::UI::Core::CoreWindow^ window);
-                virtual void Load(Platform::String^ entryPoint);
-                virtual void Run();
-                virtual void Uninitialize();
-
-            protected:
-                // Application lifecycle event handlers.
-                void OnActivated(Windows::ApplicationModel::Core::CoreApplicationView^ applicationView, Windows::ApplicationModel::Activation::IActivatedEventArgs^ args);
-                void OnSuspending(Platform::Object^ sender, Windows::ApplicationModel::SuspendingEventArgs^ args);
-                void OnResuming(Platform::Object^ sender, Platform::Object^ args);
-
-                // Window event handlers.
-                void OnWindowSizeChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::WindowSizeChangedEventArgs^ args);
-                void OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args);
-                void OnWindowClosed(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::CoreWindowEventArgs^ args);
-
-                // DisplayInformation event handlers.
-                void OnDpiChanged(Windows::Graphics::Display::DisplayInformation^ sender, Platform::Object^ args);
-                void OnOrientationChanged(Windows::Graphics::Display::DisplayInformation^ sender, Platform::Object^ args);
-                void OnDisplayContentsInvalidated(Windows::Graphics::Display::DisplayInformation^ sender, Platform::Object^ args);
-
-            private:
-                // Private accessor for m_deviceResources, protects against device removed errors.
-                std::shared_ptr<DX::DeviceResources> GetDeviceResources();
-
-                std::shared_ptr<DX::DeviceResources> m_deviceResources;
-                std::unique_ptr<QUnoDirectMain> m_main;
-                bool m_windowClosed;
-                bool m_windowVisible;
-            };
-
-            ref class Direct3DApplicationSource sealed : Windows::ApplicationModel::Core::IFrameworkViewSource
-            {
-            public:
-                virtual Windows::ApplicationModel::Core::IFrameworkView^ CreateView();
-            };
-        };
+    public:
+        // IFrameworkViewSource
+        IFrameworkView CreateView();
     };
-};
-*/
+
+    class App : public winrt::implements<App, IFrameworkView>
+    {
+    public:
+        App() noexcept :
+            _exit(false),
+            _visible(true),
+            _sizemove(false),
+            _dpi(96.f),
+            _logicalWidth(1024.f),
+            _logicalHeight(768.f),
+            _nativeOrientation(DisplayOrientations::None),
+            _currentOrientation(DisplayOrientations::None)
+        {
+        }
+
+        // IFrameworkView
+        void Initialize(CoreApplicationView const& applicationView);
+        void Uninitialize() noexcept;
+        void SetWindow(CoreWindow const& window);
+        void Load(winrt::hstring const& entryPoint) noexcept;
+        void Run();
+
+    protected:
+        void OnActivated(CoreApplicationView const& applicationView, IActivatedEventArgs const& args);
+        void OnSuspending(IInspectable const& sender, SuspendingEventArgs const& args);
+        void OnResuming(IInspectable const& sender, IInspectable const& args);
+        void OnWindowSizeChanged(CoreWindow const& window, WindowSizeChangedEventArgs const& args);
+        void OnVisibilityChanged(CoreWindow const& window, VisibilityChangedEventArgs const& args);
+        void OnAcceleratorKeyActivated(CoreDispatcher const& dispatcher, AcceleratorKeyEventArgs const& args);
+        void OnDpiChanged(DisplayInformation const& sender, IInspectable const& args);
+        void OnOrientationChanged(DisplayInformation const& sender, IInspectable const& args);
+        void OnDisplayContentsInvalidated(DisplayInformation const& sender, IInspectable const& args);
+
+    private:
+        bool _exit;
+        bool _visible;
+        bool _sizemove;
+        float _dpi;
+        float _logicalWidth;
+        float _logicalHeight;
+        DisplayOrientations	_nativeOrientation;
+        DisplayOrientations	_currentOrientation;
+        std::unique_ptr<Game> _game;
+
+        DXGI_MODE_ROTATION ComputeDisplayRotation() const noexcept;
+        void HandleWindowSizeChanged();
+
+        inline int ConvertDipsToPixels(float dips) const noexcept
+        {
+            return int(dips * _dpi / 96.f + 0.5f);
+        }
+
+        inline float ConvertPixelsToDips(int pixels) const noexcept
+        {
+            return (float(pixels) * 96.f / _dpi);
+        }
+    };
+}
