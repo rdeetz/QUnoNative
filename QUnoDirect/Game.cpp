@@ -2,181 +2,191 @@
 // 2021 Roger Deetz
 
 #include "pch.h"
-
 #include "Game.h"
 
 extern void ExitGame() noexcept;
 
 using namespace DirectX;
+using namespace DX;
 using namespace Mooville::QUno::Direct;
 
 Game::Game() noexcept(false)
 {
-    m_deviceResources = std::make_unique<DX::DeviceResources>();
-    m_deviceResources->RegisterDeviceNotify(this);
+    _deviceResources = std::make_unique<DeviceResources>();
+    _deviceResources->RegisterDeviceNotify(this);
 }
 
-// Initialize the Direct3D resources required to run.
 void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation)
 {
-    m_deviceResources->SetWindow(window, width, height, rotation);
+    _deviceResources->SetWindow(window, width, height, rotation);
 
-    m_deviceResources->CreateDeviceResources();
+    _deviceResources->CreateDeviceResources(); // TODO Rename this method on DeviceResources.
     CreateDeviceDependentResources();
 
-    m_deviceResources->CreateWindowSizeDependentResources();
+    _deviceResources->CreateWindowSizeDependentResources();
     CreateWindowSizeDependentResources();
 
-    // TODO: Change the timer settings if you want something other than the default variable timestep mode.
+    // TODO Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
     /*
-    m_timer.SetFixedTimeStep(true);
-    m_timer.SetTargetElapsedSeconds(1.0 / 60);
+    _timer.SetFixedTimeStep(true);
+    _timer.SetTargetElapsedSeconds(1.0 / 60);
     */
+
+    return;
 }
 
-// Creates and initializes the renderers.
-void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
-{
-    // TODO: Replace this with your app's content initialization.
-    m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
-
-    //OnWindowSizeChanged();
-}
-
-#pragma region Frame Update
-// Executes the basic game loop.
 void Game::Tick()
 {
-    m_timer.Tick([&]()
+    _timer.Tick([&]()
         {
-            Update(m_timer);
+            Update(_timer);
         });
 
     Render();
+
+    return;
 }
 
-// Updates the world.
-void Game::Update(DX::StepTimer const& timer)
+void Game::OnDeviceLost()
+{
+    // TODO Add Direct3D resource cleanup here.
+    return;
+}
+
+void Game::OnDeviceRestored()
+{
+    CreateDeviceDependentResources();
+    CreateWindowSizeDependentResources();
+
+    return;
+}
+
+void Game::OnActivated()
+{
+    // TODO Game is becoming the active window.
+    return;
+}
+
+void Game::OnDeactivated()
+{
+    // TODO Game is becoming a background window.
+    return;
+}
+
+void Game::OnSuspending()
+{
+    // TODO Game is being power-suspended.
+    return;
+}
+
+void Game::OnResuming()
+{
+    _timer.ResetElapsedTime();
+
+    // TODO Game is being power-resumed.
+    return;
+}
+
+void Game::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
+{
+    if (_deviceResources->WindowSizeChanged(width, height, rotation))
+    {
+        // TODO Game window is being resized.
+        CreateWindowSizeDependentResources();
+    }
+    
+    return;
+}
+
+void Game::ValidateDevice()
+{
+    _deviceResources->ValidateDevice();
+
+    return;
+}
+
+void Game::GetDefaultSize(int& width, int& height) const noexcept
+{
+    // The minimum size is 320 x 200.
+    width = 1024;
+    height = 768;
+
+    return;
+}
+
+void Game::Update(StepTimer const& timer)
 {
     PIXBeginEvent(PIX_COLOR_DEFAULT, L"Update");
 
     float elapsedTime = float(timer.GetElapsedSeconds());
 
-    // TODO: Add your game logic here.
+    // TODO Add your game logic here.
     elapsedTime;
 
     PIXEndEvent();
-}
-#pragma endregion
 
-#pragma region Frame Render
-// Draws the scene.
+    return;
+}
+
 void Game::Render()
 {
     // Don't try to render anything before the first Update.
-    if (m_timer.GetFrameCount() == 0)
+    if (_timer.GetFrameCount() == 0)
     {
         return;
     }
 
     // Prepare the command list to render a new frame.
-    m_deviceResources->Prepare();
+    _deviceResources->Prepare();
     Clear();
 
-    auto commandList = m_deviceResources->GetCommandList();
+    auto commandList = _deviceResources->GetCommandList();
     PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Render");
 
-    // TODO: Add your rendering code here.
+    // TODO Add your rendering code here.
 
     PIXEndEvent(commandList);
 
     // Show the new frame.
-    PIXBeginEvent(m_deviceResources->GetCommandQueue(), PIX_COLOR_DEFAULT, L"Present");
-    m_deviceResources->Present();
-    PIXEndEvent(m_deviceResources->GetCommandQueue());
+    PIXBeginEvent(_deviceResources->GetCommandQueue(), PIX_COLOR_DEFAULT, L"Present");
+    _deviceResources->Present();
+    PIXEndEvent(_deviceResources->GetCommandQueue());
+
+    return;
 }
 
-// Helper method to clear the back buffers.
 void Game::Clear()
 {
-    auto commandList = m_deviceResources->GetCommandList();
+    auto commandList = _deviceResources->GetCommandList();
     PIXBeginEvent(commandList, PIX_COLOR_DEFAULT, L"Clear");
 
     // Clear the views.
-    auto rtvDescriptor = m_deviceResources->GetRenderTargetView();
-    auto dsvDescriptor = m_deviceResources->GetDepthStencilView();
+    auto rtvDescriptor = _deviceResources->GetRenderTargetView();
+    auto dsvDescriptor = _deviceResources->GetDepthStencilView();
 
     commandList->OMSetRenderTargets(1, &rtvDescriptor, FALSE, &dsvDescriptor);
     commandList->ClearRenderTargetView(rtvDescriptor, Colors::CornflowerBlue, 0, nullptr);
     commandList->ClearDepthStencilView(dsvDescriptor, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 
     // Set the viewport and scissor rect.
-    auto viewport = m_deviceResources->GetScreenViewport();
-    auto scissorRect = m_deviceResources->GetScissorRect();
+    auto viewport = _deviceResources->GetScreenViewport();
+    auto scissorRect = _deviceResources->GetScissorRect();
     commandList->RSSetViewports(1, &viewport);
     commandList->RSSetScissorRects(1, &scissorRect);
 
     PIXEndEvent(commandList);
-}
-#pragma endregion
 
-#pragma region Message Handlers
-// Message handlers
-void Game::OnActivated()
-{
-    // TODO: Game is becoming active window.
+    return;
 }
 
-void Game::OnDeactivated()
-{
-    // TODO: Game is becoming background window.
-}
-
-void Game::OnSuspending()
-{
-    // TODO: Game is being power-suspended.
-}
-
-void Game::OnResuming()
-{
-    m_timer.ResetElapsedTime();
-
-    // TODO: Game is being power-resumed.
-}
-
-void Game::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
-{
-    if (!m_deviceResources->WindowSizeChanged(width, height, rotation))
-        return;
-
-    CreateWindowSizeDependentResources();
-
-    // TODO: Game window is being resized.
-}
-
-void Game::ValidateDevice()
-{
-    m_deviceResources->ValidateDevice();
-}
-
-// Properties
-void Game::GetDefaultSize(int& width, int& height) const noexcept
-{
-    // TODO: Change to desired default window size (note minimum size is 320x200).
-    width = 1024;
-    height = 768;
-}
-#pragma endregion
-
-#pragma region Direct3D Resources
-// These are the resources that depend on the device.
 void Game::CreateDeviceDependentResources()
 {
-    auto device = m_deviceResources->GetD3DDevice();
+    auto device = _deviceResources->GetD3DDevice();
 
-    // Check Shader Model 6 support
+    // Check Shader Model 6 support.
     D3D12_FEATURE_DATA_SHADER_MODEL shaderModel = { D3D_SHADER_MODEL_6_0 };
+
     if (FAILED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &shaderModel, sizeof(shaderModel)))
         || (shaderModel.HighestShaderModel < D3D_SHADER_MODEL_6_0))
     {
@@ -186,25 +196,24 @@ void Game::CreateDeviceDependentResources()
         throw std::runtime_error("Shader Model 6.0 is not supported!");
     }
 
-    // TODO: Initialize device dependent objects here (independent of window size).
+    // TODO Initialize device dependent objects here (independent of window size).
+
+    return;
 }
 
-// Allocate all memory resources that change on a window SizeChanged event.
 void Game::CreateWindowSizeDependentResources()
 {
-    // TODO: Initialize windows-size dependent objects here.
+    // TODO Initialize windows-size dependent objects here.
+    //      Allocate all memory resources that change on a window SizeChanged event.
+    return;
 }
 
-void Game::OnDeviceLost()
+/*
+void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
 {
-    // TODO: Add Direct3D resource cleanup here.
+    // TODO: Replace this with your app's content initialization.
+    m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+
+    OnWindowSizeChanged();
 }
-
-void Game::OnDeviceRestored()
-{
-    CreateDeviceDependentResources();
-
-    CreateWindowSizeDependentResources();
-}
-
-#pragma endregion
+*/

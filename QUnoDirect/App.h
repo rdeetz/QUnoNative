@@ -6,12 +6,12 @@
 #include "pch.h"
 #include "Game.h"
 
-using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::ApplicationModel;
 using namespace winrt::Windows::ApplicationModel::Core;
 using namespace winrt::Windows::ApplicationModel::Activation;
-using namespace winrt::Windows::UI::Core;
+using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::Graphics::Display;
+using namespace winrt::Windows::UI::Core;
 using namespace DirectX;
 using namespace Mooville::QUno::Direct;
 
