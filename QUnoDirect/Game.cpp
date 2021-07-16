@@ -20,7 +20,7 @@ void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTAT
 {
     _deviceResources->SetWindow(window, width, height, rotation);
 
-    _deviceResources->CreateDeviceResources(); // TODO Rename this method on DeviceResources.
+    _deviceResources->CreateDeviceDependentResources();
     CreateDeviceDependentResources();
 
     _deviceResources->CreateWindowSizeDependentResources();

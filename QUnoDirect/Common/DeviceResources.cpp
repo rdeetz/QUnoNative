@@ -59,7 +59,7 @@ DeviceResources::~DeviceResources()
 }
 
 // Configures the Direct3D device, and stores handles to it and the device context.
-void DeviceResources::CreateDeviceResources()
+void DeviceResources::CreateDeviceDependentResources()
 {
 #if defined(_DEBUG)
     // Enable the debug layer (requires the Graphics Tools "optional feature").
@@ -536,7 +536,7 @@ void DeviceResources::HandleDeviceLost()
     }
 #endif
 
-    CreateDeviceResources();
+    CreateDeviceDependentResources();
     CreateWindowSizeDependentResources();
 
     if (m_deviceNotify)

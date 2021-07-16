@@ -18,20 +18,19 @@ namespace DX
         static const unsigned int c_AllowTearing = 0x1;
         static const unsigned int c_EnableHDR = 0x2;
 
-        DeviceResources(DXGI_FORMAT backBufferFormat = DXGI_FORMAT_B8G8R8A8_UNORM,
+        DeviceResources(
+            DXGI_FORMAT backBufferFormat = DXGI_FORMAT_B8G8R8A8_UNORM,
             DXGI_FORMAT depthBufferFormat = DXGI_FORMAT_D32_FLOAT,
             UINT backBufferCount = 2,
             D3D_FEATURE_LEVEL minFeatureLevel = D3D_FEATURE_LEVEL_11_0,
             unsigned int flags = 0) noexcept(false);
         ~DeviceResources();
-
         DeviceResources(DeviceResources&&) = default;
         DeviceResources& operator= (DeviceResources&&) = default;
-
         DeviceResources(DeviceResources const&) = delete;
         DeviceResources& operator= (DeviceResources const&) = delete;
 
-        void CreateDeviceResources();
+        void CreateDeviceDependentResources();
         void CreateWindowSizeDependentResources();
         void SetWindow(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation) noexcept;
         bool WindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation);
