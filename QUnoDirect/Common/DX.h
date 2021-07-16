@@ -9,26 +9,26 @@ using namespace DirectX;
 
 namespace DX
 {
-	// Use triple buffering.
-	static const UINT c_frameCount = 3;
+    // Use triple buffering.
+    static const UINT c_frameCount = 3;
 
-	// Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
-	inline float ConvertDipsToPixels(float dips, float dpi)
-	{
-		static const float dipsPerInch = 96.0f;
-		return floorf(dips * dpi / dipsPerInch + 0.5f); // Round to nearest integer.
-	}
+    // Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
+    inline float ConvertDipsToPixels(float dips, float dpi)
+    {
+        static const float dipsPerInch = 96.0f;
+        return floorf(dips * dpi / dipsPerInch + 0.5f); // Round to nearest integer.
+    }
 
-	// Assign a name to the object to aid with debugging.
+    // Assign a name to the object to aid with debugging.
 #if defined(_DEBUG)
-	inline void SetName(ID3D12Object* pObject, LPCWSTR name)
-	{
-		pObject->SetName(name);
-	}
+    inline void SetName(ID3D12Object* pObject, LPCWSTR name)
+    {
+        pObject->SetName(name);
+    }
 #else
-	inline void SetName(ID3D12Object*, LPCWSTR)
-	{
-	}
+    inline void SetName(ID3D12Object*, LPCWSTR)
+    {
+    }
 #endif
 
     // Allows an object that owns DeviceResources to be notified of the device being lost or created.
@@ -73,6 +73,21 @@ namespace DX
         0.0f, 0.0f, 1.0f, 0.0f,
         0.0f, 0.0f, 0.0f, 1.0f
     );
+
+    // Constant buffer used to send MVP matrices to the vertex shader.
+    struct ModelViewProjectionConstantBuffer
+    {
+        XMFLOAT4X4 model;
+        XMFLOAT4X4 view;
+        XMFLOAT4X4 projection;
+    };
+
+    // Used to send per-vertex data to the vertex shader.
+    struct VertexPositionColor
+    {
+        XMFLOAT3 pos;
+        XMFLOAT3 color;
+    };
 
     inline DXGI_FORMAT NoSRGB(DXGI_FORMAT fmt) noexcept
     {
