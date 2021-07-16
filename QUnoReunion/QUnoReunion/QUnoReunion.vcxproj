@@ -152,6 +152,11 @@
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QUnoComponent\QUnoComponent.vcxproj">
+      <Project>{e3500191-7f00-41af-b2b4-40fcdd7f1b8c}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\..\packages\Microsoft.ProjectReunion.DWrite.0.8.1\build\Microsoft.ProjectReunion.DWrite.targets" Condition="Exists('..\..\packages\Microsoft.ProjectReunion.DWrite.0.8.1\build\Microsoft.ProjectReunion.DWrite.targets')" />
