@@ -4,6 +4,7 @@
 #pragma once
 
 #include "pch.h"
+#include "Common/DX.h"
 #include "Common/StepTimer.h"
 #include "Common/DeviceResources.h"
 //#include "Content/Sample3DSceneRenderer.h"

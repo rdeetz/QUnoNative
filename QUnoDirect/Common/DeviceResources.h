@@ -3,82 +3,15 @@
 
 #pragma once
 
-//#include <wrl/client.h>
-//#include <wrl/event.h>
+#include "pch.h"
+#include "DX.h"
+
+using namespace Microsoft::WRL;
+using namespace Microsoft::WRL::Wrappers;
+using namespace DirectX;
 
 namespace DX
 {
-    static const UINT c_frameCount = 3;		// Use triple buffering.
-
-    //using namespace winrt::Windows::Foundation;
-
-    // Function that reads from a binary file asynchronously.
-    /*
-    inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
-    {
-        using namespace winrt::Windows::ApplicationModel;
-        using namespace winrt::Windows::Storage;
-        using namespace winrt::Windows::Storage::Streams;
-
-        auto folder = Package::Current().InstalledLocation();
-        auto file = co_await folder.GetFileAsync(filename);
-        auto fileBuffer = co_await FileIO::ReadBufferAsync(file);
-        std::vector<byte> returnBuffer;
-        returnBuffer.resize(fileBuffer.Length());
-        DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
-        //auto dataReader = DataReader::FromBuffer(fileBuffer);
-        //dataReader.ReadBytes(returnBuffer.data());
-
-        co_return returnBuffer;
-
-        return create_task(
-                // get a file via IAsync given a file name from the installed location folder
-                folder->GetFileAsync(Platform::StringReference(filename.c_str()))
-            ).then([](StorageFile^ file)
-            {
-                // This returns an IAsync that returns a buffer
-                return FileIO::ReadBufferAsync(file);
-            }).then([](Streams::IBuffer^ fileBuffer) -> std::vector<byte>
-                {
-                    // This takes a file buffer, reads the bytes and copies them to an array which is then returned
-                    std::vector<byte> returnBuffer;
-                    returnBuffer.resize(fileBuffer->Length);
-                    Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
-                    return returnBuffer;
-                });
-    }
-    */
-
-    // Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
-    inline float ConvertDipsToPixels(float dips, float dpi)
-    {
-        static const float dipsPerInch = 96.0f;
-        return floorf(dips * dpi / dipsPerInch + 0.5f); // Round to nearest integer.
-    }
-
-    // Assign a name to the object to aid with debugging.
-#if defined(_DEBUG)
-    inline void SetName(ID3D12Object* pObject, LPCWSTR name)
-    {
-        pObject->SetName(name);
-    }
-#else
-    inline void SetName(ID3D12Object*, LPCWSTR)
-    {
-    }
-#endif
-
-    // Provides an interface for an application that owns DeviceResources to be notified of the device being lost or created.
-    interface IDeviceNotify
-    {
-        virtual void OnDeviceLost() = 0;
-        virtual void OnDeviceRestored() = 0;
-
-    protected:
-        ~IDeviceNotify() = default;
-    };
-
-    // Controls all the DirectX device resources.
     class DeviceResources
     {
     public:
@@ -110,12 +43,6 @@ namespace DX
         void Present(D3D12_RESOURCE_STATES beforeState = D3D12_RESOURCE_STATE_RENDER_TARGET);
         void WaitForGpu() noexcept;
 
-        // The size of the render target, in pixels.
-        //RECT	GetOutputSize() const { return m_outputSize; }
-
-        // The size of the render target, in dips.
-        //Windows::Foundation::Size	GetLogicalSize() const { return m_logicalSize; }
-
         // Device Accessors.
         RECT GetOutputSize() const noexcept { return m_outputSize; }
         DXGI_MODE_ROTATION GetRotation() const noexcept { return m_rotation; }
@@ -136,7 +63,7 @@ namespace DX
         D3D12_RECT                  GetScissorRect() const noexcept { return m_scissorRect; }
         UINT                        GetCurrentFrameIndex() const noexcept { return m_backBufferIndex; }
         UINT                        GetBackBufferCount() const noexcept { return m_backBufferCount; }
-        DirectX::XMFLOAT4X4         GetOrientationTransform3D() const noexcept { return m_orientationTransform3D; }
+        XMFLOAT4X4         GetOrientationTransform3D() const noexcept { return m_orientationTransform3D; }
         DXGI_COLOR_SPACE_TYPE       GetColorSpace() const noexcept { return m_colorSpace; }
         unsigned int                GetDeviceOptions() const noexcept { return m_options; }
 
@@ -161,25 +88,25 @@ namespace DX
         UINT                                        m_backBufferIndex;
 
         // Direct3D objects.
-        Microsoft::WRL::ComPtr<ID3D12Device>                m_d3dDevice;
-        Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList>   m_commandList;
-        Microsoft::WRL::ComPtr<ID3D12CommandQueue>          m_commandQueue;
-        Microsoft::WRL::ComPtr<ID3D12CommandAllocator>      m_commandAllocators[MAX_BACK_BUFFER_COUNT];
+        ComPtr<ID3D12Device>                m_d3dDevice;
+        ComPtr<ID3D12GraphicsCommandList>   m_commandList;
+        ComPtr<ID3D12CommandQueue>          m_commandQueue;
+        ComPtr<ID3D12CommandAllocator>      m_commandAllocators[MAX_BACK_BUFFER_COUNT];
 
         // Swap chain objects.
-        Microsoft::WRL::ComPtr<IDXGIFactory4>               m_dxgiFactory;
-        Microsoft::WRL::ComPtr<IDXGISwapChain3>             m_swapChain;
-        Microsoft::WRL::ComPtr<ID3D12Resource>              m_renderTargets[MAX_BACK_BUFFER_COUNT];
-        Microsoft::WRL::ComPtr<ID3D12Resource>              m_depthStencil;
+        ComPtr<IDXGIFactory4>               m_dxgiFactory;
+        ComPtr<IDXGISwapChain3>             m_swapChain;
+        ComPtr<ID3D12Resource>              m_renderTargets[MAX_BACK_BUFFER_COUNT];
+        ComPtr<ID3D12Resource>              m_depthStencil;
 
         // Presentation fence objects.
-        Microsoft::WRL::ComPtr<ID3D12Fence>                 m_fence;
+        ComPtr<ID3D12Fence>                 m_fence;
         UINT64                                              m_fenceValues[MAX_BACK_BUFFER_COUNT];
-        Microsoft::WRL::Wrappers::Event                     m_fenceEvent;
+        Event                     m_fenceEvent;
 
         // Direct3D rendering objects.
-        Microsoft::WRL::ComPtr<ID3D12DescriptorHeap>        m_rtvDescriptorHeap;
-        Microsoft::WRL::ComPtr<ID3D12DescriptorHeap>        m_dsvDescriptorHeap;
+        ComPtr<ID3D12DescriptorHeap>        m_rtvDescriptorHeap;
+        ComPtr<ID3D12DescriptorHeap>        m_dsvDescriptorHeap;
         UINT                                                m_rtvDescriptorSize;
         D3D12_VIEWPORT                                      m_screenViewport;
         D3D12_RECT                                          m_scissorRect;
@@ -204,22 +131,48 @@ namespace DX
         unsigned int                                        m_options;
 
         // Transforms used for display orientation.
-        DirectX::XMFLOAT4X4                                 m_orientationTransform3D;
+        XMFLOAT4X4                                 m_orientationTransform3D;
 
         // The IDeviceNotify can be held directly as it owns the DeviceResources.
         IDeviceNotify* m_deviceNotify;
     };
 }
 
-// Naming helper function for ComPtr<T>.
-// Assigns the name of the variable as the name of the object.
-#define NAME_D3D12_OBJECT(x) DX::SetName(x.Get(), L#x)
+/*
+inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
+{
+    auto folder = Package::Current().InstalledLocation();
+    auto file = co_await folder.GetFileAsync(filename);
+    auto fileBuffer = co_await FileIO::ReadBufferAsync(file);
+    std::vector<byte> returnBuffer;
+    returnBuffer.resize(fileBuffer.Length());
+    DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
+    //auto dataReader = DataReader::FromBuffer(fileBuffer);
+    //dataReader.ReadBytes(returnBuffer.data());
+
+    co_return returnBuffer;
+
+    return create_task(
+            // get a file via IAsync given a file name from the installed location folder
+            folder->GetFileAsync(Platform::StringReference(filename.c_str()))
+        ).then([](StorageFile^ file)
+        {
+            // This returns an IAsync that returns a buffer
+            return FileIO::ReadBufferAsync(file);
+        }).then([](Streams::IBuffer^ fileBuffer) -> std::vector<byte>
+            {
+                // This takes a file buffer, reads the bytes and copies them to an array which is then returned
+                std::vector<byte> returnBuffer;
+                returnBuffer.resize(fileBuffer->Length);
+                Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
+                return returnBuffer;
+            });
+}
+*/
 
 /*
 namespace DX
 {
-    static const UINT c_frameCount = 3;		// Use triple buffering.
-
     // Controls all the DirectX device resources.
     class DeviceResources
     {

@@ -2,13 +2,12 @@
 // 2021 Roger Deetz
 
 #include "pch.h"
-
 #include "DeviceResources.h"
 
+using namespace Microsoft::WRL;
+using namespace Microsoft::WRL::Wrappers;
 using namespace DirectX;
 using namespace DX;
-
-using Microsoft::WRL::ComPtr;
 
 #ifdef __clang__
 #pragma clang diagnostic ignored "-Wcovered-switch-default"
@@ -17,57 +16,6 @@ using Microsoft::WRL::ComPtr;
 
 #pragma warning(disable : 4061)
 
-// Constants used to calculate screen rotations
-namespace DX
-{
-    // 0-degree Z-rotation
-    static const XMFLOAT4X4 Rotation0(
-        1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-    );
-
-    // 90-degree Z-rotation
-    static const XMFLOAT4X4 Rotation90(
-        0.0f, 1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-    );
-
-    // 180-degree Z-rotation
-    static const XMFLOAT4X4 Rotation180(
-        -1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, -1.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-    );
-
-    // 270-degree Z-rotation
-    static const XMFLOAT4X4 Rotation270(
-        0.0f, -1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-    );
-}
-
-namespace DX
-{
-    inline DXGI_FORMAT NoSRGB(DXGI_FORMAT fmt) noexcept
-    {
-        switch (fmt)
-        {
-        case DXGI_FORMAT_R8G8B8A8_UNORM_SRGB:   return DXGI_FORMAT_R8G8B8A8_UNORM;
-        case DXGI_FORMAT_B8G8R8A8_UNORM_SRGB:   return DXGI_FORMAT_B8G8R8A8_UNORM;
-        case DXGI_FORMAT_B8G8R8X8_UNORM_SRGB:   return DXGI_FORMAT_B8G8R8X8_UNORM;
-        default:                                return fmt;
-        }
-    }
-}
-
-// Constructor for DeviceResources.
 DeviceResources::DeviceResources(
     DXGI_FORMAT backBufferFormat,
     DXGI_FORMAT depthBufferFormat,
@@ -104,7 +52,6 @@ DeviceResources::DeviceResources(
     }
 }
 
-// Destructor for DeviceResources.
 DeviceResources::~DeviceResources()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be destroyed.
@@ -888,41 +835,6 @@ namespace DisplayMetrics
     static const float HeightThreshold = 1080.0f;	// 1080p height.
 };
 
-// Constants used to calculate screen rotations.
-namespace ScreenRotation
-{
-    // 0-degree Z-rotation
-    static const XMFLOAT4X4 Rotation0(
-        1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-        );
-
-    // 90-degree Z-rotation
-    static const XMFLOAT4X4 Rotation90(
-        0.0f, 1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-        );
-
-    // 180-degree Z-rotation
-    static const XMFLOAT4X4 Rotation180(
-        -1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, -1.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-        );
-
-    // 270-degree Z-rotation
-    static const XMFLOAT4X4 Rotation270(
-        0.0f, -1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-        );
-};
 
 // Constructor for DeviceResources.
 DX::DeviceResources::DeviceResources(DXGI_FORMAT backBufferFormat, DXGI_FORMAT depthBufferFormat) :
