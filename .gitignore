@@ -7,5 +7,6 @@ packages/
 *.user
 *.pfx
 *.filters
+*.cache
 Generated Files/
 AppPackages/
