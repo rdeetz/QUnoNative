@@ -44,10 +44,10 @@ namespace Mooville::QUno::Direct
         void Clear();
         void CreateDeviceDependentResources();
         void CreateWindowSizeDependentResources();
-        void CreateRenderer(const std::shared_ptr<DeviceResources>& deviceResources);
+        void CreateRenderer();
 
         StepTimer _timer;
-        std::unique_ptr<DeviceResources> _deviceResources;
+        std::shared_ptr<DeviceResources> _deviceResources;
         std::unique_ptr<Sample3DSceneRenderer> _sceneRenderer;
     };
 }

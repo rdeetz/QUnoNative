@@ -17,7 +17,7 @@ namespace Mooville::QUno::Direct
     class Sample3DSceneRenderer
     {
     public:
-        Sample3DSceneRenderer(const std::shared_ptr<DeviceResources>& deviceResources);
+        Sample3DSceneRenderer(std::shared_ptr<DeviceResources> const& deviceResources);
         ~Sample3DSceneRenderer();
         void CreateDeviceDependentResources();
         void CreateWindowSizeDependentResources();

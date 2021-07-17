@@ -26,6 +26,8 @@ void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTAT
     _deviceResources->CreateWindowSizeDependentResources();
     CreateWindowSizeDependentResources();
 
+    CreateRenderer();
+
     // TODO Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
     /*
@@ -208,10 +210,10 @@ void Game::CreateWindowSizeDependentResources()
     return;
 }
 
-void Game::CreateRenderer(const std::shared_ptr<DeviceResources>& deviceResources)
+void Game::CreateRenderer()
 {
     // TODO Replace this with your app's content initialization.
-    _sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+    _sceneRenderer = std::make_unique<Sample3DSceneRenderer>(_deviceResources);
 
     return;
 }

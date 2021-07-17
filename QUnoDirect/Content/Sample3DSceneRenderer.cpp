@@ -17,7 +17,39 @@ winrt::hstring AngleKey = L"Angle";
 winrt::hstring TrackingKey = L"Tracking";
 
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
-Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DeviceResources>& deviceResources) :
+/*
+inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
+{
+    auto folder = Package::Current().InstalledLocation();
+    auto file = co_await folder.GetFileAsync(filename);
+    auto fileBuffer = co_await FileIO::ReadBufferAsync(file);
+    std::vector<byte> returnBuffer;
+    returnBuffer.resize(fileBuffer.Length());
+    DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
+    //auto dataReader = DataReader::FromBuffer(fileBuffer);
+    //dataReader.ReadBytes(returnBuffer.data());
+
+    co_return returnBuffer;
+
+    return create_task(
+            // get a file via IAsync given a file name from the installed location folder
+            folder->GetFileAsync(Platform::StringReference(filename.c_str()))
+        ).then([](StorageFile^ file)
+        {
+            // This returns an IAsync that returns a buffer
+            return FileIO::ReadBufferAsync(file);
+        }).then([](Streams::IBuffer^ fileBuffer) -> std::vector<byte>
+            {
+                // This takes a file buffer, reads the bytes and copies them to an array which is then returned
+                std::vector<byte> returnBuffer;
+                returnBuffer.resize(fileBuffer->Length);
+                Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
+                return returnBuffer;
+            });
+}
+*/
+
+Sample3DSceneRenderer::Sample3DSceneRenderer(std::shared_ptr<DeviceResources> const& deviceResources) :
     _loadingComplete(false),
     _radiansPerSecond(XM_PIDIV4),	// rotate 45 degrees per second
     _angle(0),
