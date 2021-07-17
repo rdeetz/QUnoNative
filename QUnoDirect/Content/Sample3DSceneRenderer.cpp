@@ -5,6 +5,7 @@
 #include "Sample3DSceneRenderer.h"
 
 using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Storage;
 using namespace Microsoft::WRL;
 using namespace DirectX;
@@ -16,7 +17,7 @@ winrt::hstring AngleKey = L"Angle";
 winrt::hstring TrackingKey = L"Tracking";
 
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
-Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
+Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DeviceResources>& deviceResources) :
     _loadingComplete(false),
     _radiansPerSecond(XM_PIDIV4),	// rotate 45 degrees per second
     _angle(0),
@@ -307,7 +308,6 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
     */
 }
 
-// Initializes view parameters when the window size changes.
 void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 {
     RECT outputSize = _deviceResources->GetOutputSize();
@@ -440,44 +440,41 @@ bool Sample3DSceneRenderer::Render()
     return true;
 }
 
-// Saves the current state of the renderer.
 void Sample3DSceneRenderer::SaveState()
 {
-    /*
     auto state = ApplicationData::Current().LocalSettings().Values();
 
     if (state.HasKey(AngleKey))
     {
         state.Remove(AngleKey);
     }
+
     if (state.HasKey(TrackingKey))
     {
         state.Remove(TrackingKey);
     }
 
-    state.Insert(AngleKey, PropertyValue::CreateSingle(m_angle));
-    state.Insert(TrackingKey, PropertyValue::CreateBoolean(m_tracking));
-    */
+    state.Insert(AngleKey, PropertyValue::CreateSingle(_angle));
+    state.Insert(TrackingKey, PropertyValue::CreateBoolean(_tracking));
 
     return;
 }
 
-// Restores the previous state of the renderer.
 void Sample3DSceneRenderer::LoadState()
 {
-    /*
     auto state = ApplicationData::Current().LocalSettings().Values();
+
     if (state.HasKey(AngleKey))
     {
-        m_angle = state.Lookup(AngleKey).as<IPropertyValue>().GetSingle();
+        _angle = state.Lookup(AngleKey).as<IPropertyValue>().GetSingle();
         state.Remove(AngleKey);
     }
+
     if (state.HasKey(TrackingKey))
     {
-        m_tracking = state.Lookup(TrackingKey).as<IPropertyValue>().GetBoolean();
+        _tracking = state.Lookup(TrackingKey).as<IPropertyValue>().GetBoolean();
         state.Remove(TrackingKey);
     }
-    */
 
     return;
 }
@@ -489,9 +486,9 @@ void Sample3DSceneRenderer::StartTracking()
     return;
 }
 
-// When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
 void Sample3DSceneRenderer::TrackingUpdate(float positionX)
 {
+    // When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
     if (_tracking)
     {
         float radians = XM_2PI * 2.0f * positionX / (_deviceResources->GetOutputSize().right - _deviceResources->GetOutputSize().left);
@@ -508,9 +505,9 @@ void Sample3DSceneRenderer::StopTracking()
     return;
 }
 
-// Rotate the 3D cube model a set amount of radians.
 void Sample3DSceneRenderer::Rotate(float radians)
 {
+    // Rotate the 3D cube model a set amount of radians.
     // Prepare to pass the updated model matrix to the shader.
     XMStoreFloat4x4(&_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
 

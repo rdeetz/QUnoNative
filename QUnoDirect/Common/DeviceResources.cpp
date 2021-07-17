@@ -438,7 +438,8 @@ void DeviceResources::SetWindow(::IUnknown* window, int width, int height, DXGI_
 bool DeviceResources::WindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
 {
     RECT newRc;
-    newRc.left = newRc.top = 0;
+    newRc.left = 0;
+    newRc.top = 0;
     newRc.right = width;
     newRc.bottom = height;
 

@@ -208,12 +208,10 @@ void Game::CreateWindowSizeDependentResources()
     return;
 }
 
-/*
-void Game::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
+void Game::CreateRenderer(const std::shared_ptr<DeviceResources>& deviceResources)
 {
-    // TODO: Replace this with your app's content initialization.
-    m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+    // TODO Replace this with your app's content initialization.
+    _sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
 
-    OnWindowSizeChanged();
+    return;
 }
-*/
