@@ -4,9 +4,11 @@
 #include "pch.h"
 #include "Sample3DSceneRenderer.h"
 
+using namespace winrt::Windows::ApplicationModel;
 using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Storage;
+using namespace winrt::Windows::Storage::Streams;
 using namespace Microsoft::WRL;
 using namespace DirectX;
 using namespace DX;
@@ -15,39 +17,6 @@ using namespace Mooville::QUno::Direct;
 // Indices into the application state map.
 winrt::hstring AngleKey = L"Angle";
 winrt::hstring TrackingKey = L"Tracking";
-
-// Loads vertex and pixel shaders from files and instantiates the cube geometry.
-/*
-inline IAsyncOperation<std::vector<byte>> ReadDataAsync(const winrt::param::hstring& filename)
-{
-    auto folder = Package::Current().InstalledLocation();
-    auto file = co_await folder.GetFileAsync(filename);
-    auto fileBuffer = co_await FileIO::ReadBufferAsync(file);
-    std::vector<byte> returnBuffer;
-    returnBuffer.resize(fileBuffer.Length());
-    DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
-    //auto dataReader = DataReader::FromBuffer(fileBuffer);
-    //dataReader.ReadBytes(returnBuffer.data());
-
-    co_return returnBuffer;
-
-    return create_task(
-            // get a file via IAsync given a file name from the installed location folder
-            folder->GetFileAsync(Platform::StringReference(filename.c_str()))
-        ).then([](StorageFile^ file)
-        {
-            // This returns an IAsync that returns a buffer
-            return FileIO::ReadBufferAsync(file);
-        }).then([](Streams::IBuffer^ fileBuffer) -> std::vector<byte>
-            {
-                // This takes a file buffer, reads the bytes and copies them to an array which is then returned
-                std::vector<byte> returnBuffer;
-                returnBuffer.resize(fileBuffer->Length);
-                Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
-                return returnBuffer;
-            });
-}
-*/
 
 Sample3DSceneRenderer::Sample3DSceneRenderer(std::shared_ptr<DeviceResources> const& deviceResources) :
     _loadingComplete(false),
@@ -544,4 +513,26 @@ void Sample3DSceneRenderer::Rotate(float radians)
     XMStoreFloat4x4(&_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
 
     return;
+}
+
+IAsyncOperation<IBuffer> Sample3DSceneRenderer::ReadDataAsync(winrt::param::hstring const& filename)
+{
+    auto folder = Package::Current().InstalledLocation();
+    auto file = co_await folder.GetFileAsync(filename);
+    co_return co_await FileIO::ReadBufferAsync(file);
+
+
+    //std::vector<byte> returnBuffer;
+    //returnBuffer.resize(fileBuffer.Length());
+    //DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
+    //auto dataReader = DataReader::FromBuffer(fileBuffer);
+    //dataReader.ReadBytes(returnBuffer.data());
+
+    //co_return returnBuffer;
+}
+
+winrt::array_view<byte> Sample3DSceneRenderer::GetBufferView(IBuffer const& buffer)
+{
+    byte* bytes = buffer.data();
+    return { bytes, bytes +  buffer.Length() };
 }

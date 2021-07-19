@@ -8,6 +8,8 @@
 #include "..\Common\StepTimer.h"
 #include "..\Common\DeviceResources.h"
 
+//using namespace winrt::Windows::Foundation;
+//using namespace winrt::Windows::Storage::Streams;
 using namespace Microsoft::WRL;
 using namespace DirectX;
 using namespace DX;
@@ -35,6 +37,8 @@ namespace Mooville::QUno::Direct
         static const UINT c_alignedConstantBufferSize = (sizeof(ModelViewProjectionConstantBuffer) + 255) & ~255;
 
         void Rotate(float radians);
+        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::Streams::IBuffer> ReadDataAsync(winrt::param::hstring const& filename);
+        winrt::array_view<byte> GetBufferView(winrt::Windows::Storage::Streams::IBuffer const& buffer);
 
         std::shared_ptr<DeviceResources> _deviceResources;
         ComPtr<ID3D12GraphicsCommandList> _commandList;
