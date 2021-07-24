@@ -259,19 +259,13 @@ void Sample3DSceneRenderer::Rotate(float radians)
 
 winrt::Windows::Foundation::IAsyncOperation<IBuffer> Sample3DSceneRenderer::ReadDataAsync(winrt::param::hstring const& filename)
 {
-    auto folder = Package::Current().InstalledLocation();
-    auto file = co_await folder.GetFileAsync(filename);
+    StorageFolder folder = Package::Current().InstalledLocation();
+    StorageFile file = co_await folder.GetFileAsync(filename);
     co_return co_await FileIO::ReadBufferAsync(file);
 }
 
 winrt::array_view<byte> Sample3DSceneRenderer::GetBufferView(IBuffer const& buffer)
 {
-    //std::vector<byte> returnBuffer;
-    //returnBuffer.resize(fileBuffer.Length());
-    //DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer.data());
-    //auto dataReader = DataReader::FromBuffer(fileBuffer);
-    //dataReader.ReadBytes(returnBuffer.data());
-
     byte* bytes = buffer.data();
     return { bytes, bytes + buffer.Length() };
 }
@@ -306,16 +300,15 @@ void Sample3DSceneRenderer::CreateRootSignature()
     return;
 }
 
-void Sample3DSceneRenderer::LoadShaders()
+winrt::Windows::Foundation::IAsyncAction Sample3DSceneRenderer::LoadShaders()
 {
-    //auto vertexShaderBuffer = co_await ReadDataAsync(L"SampleVertexShader.cso");
-    //_vertexShader = GetBufferView(vertexShaderBuffer);
+    IBuffer vertexShaderBuffer = co_await ReadDataAsync(L"SampleVertexShader.cso");
+    _vertexShader = GetBufferView(vertexShaderBuffer);
 
-    //auto pixelShaderBuffer = co_await ReadDataAsync(L"SamplePixelShader.cso");
-    //_pixelShader = GetBufferView(pixelShaderBuffer);
+    IBuffer pixelShaderBuffer = co_await ReadDataAsync(L"SamplePixelShader.cso");
+    _pixelShader = GetBufferView(pixelShaderBuffer);
 
-    //co_return;
-    return;
+    co_return;
 }
 
 void Sample3DSceneRenderer::CreatePipelineState()
@@ -344,8 +337,6 @@ void Sample3DSceneRenderer::CreatePipelineState()
     ThrowIfFailed(_deviceResources->GetD3DDevice()->CreateGraphicsPipelineState(&state, IID_PPV_ARGS(&_pipelineState)));
 
     // Shader data can be deleted once the pipeline state is created.
-    _vertexShader.clear();
-    _pixelShader.clear();
 
     return;
 }

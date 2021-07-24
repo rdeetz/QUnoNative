@@ -40,7 +40,7 @@ namespace Mooville::QUno::Direct
         winrt::Windows::Foundation::IAsyncOperation<IBuffer> ReadDataAsync(winrt::param::hstring const& filename);
         winrt::array_view<byte> GetBufferView(IBuffer const& buffer);
         void CreateRootSignature();
-        void LoadShaders();
+        winrt::Windows::Foundation::IAsyncAction LoadShaders();
         void CreatePipelineState();
         void UploadCommands();
 
@@ -56,8 +56,8 @@ namespace Mooville::QUno::Direct
         UINT8* _mappedConstantBuffer;
         UINT _cbvDescriptorSize;
         D3D12_RECT _scissorRect;
-        std::vector<byte> _vertexShader;
-        std::vector<byte> _pixelShader;
+        winrt::array_view<byte> _vertexShader;
+        winrt::array_view<byte> _pixelShader;
         D3D12_VERTEX_BUFFER_VIEW _vertexBufferView;
         D3D12_INDEX_BUFFER_VIEW _indexBufferView;
         bool _loadingComplete;
