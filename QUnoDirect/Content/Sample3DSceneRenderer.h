@@ -9,8 +9,8 @@
 #include "..\Common\DeviceResources.h"
 
 //using namespace winrt::Windows::Foundation;
-//using namespace winrt::Windows::Storage::Streams;
-using namespace Microsoft::WRL;
+using namespace winrt::Windows::Storage::Streams;
+//using namespace Microsoft::WRL;
 using namespace DirectX;
 using namespace DX;
 
@@ -37,17 +37,21 @@ namespace Mooville::QUno::Direct
         static const UINT c_alignedConstantBufferSize = (sizeof(ModelViewProjectionConstantBuffer) + 255) & ~255;
 
         void Rotate(float radians);
-        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::Streams::IBuffer> ReadDataAsync(winrt::param::hstring const& filename);
-        winrt::array_view<byte> GetBufferView(winrt::Windows::Storage::Streams::IBuffer const& buffer);
+        winrt::Windows::Foundation::IAsyncOperation<IBuffer> ReadDataAsync(winrt::param::hstring const& filename);
+        winrt::array_view<byte> GetBufferView(IBuffer const& buffer);
+        void CreateRootSignature();
+        void LoadShaders();
+        void CreatePipelineState();
+        void UploadCommands();
 
         std::shared_ptr<DeviceResources> _deviceResources;
-        ComPtr<ID3D12GraphicsCommandList> _commandList;
-        ComPtr<ID3D12RootSignature>	_rootSignature;
-        ComPtr<ID3D12PipelineState>	_pipelineState;
-        ComPtr<ID3D12DescriptorHeap> _cbvHeap;
-        ComPtr<ID3D12Resource> _vertexBuffer;
-        ComPtr<ID3D12Resource> _indexBuffer;
-        ComPtr<ID3D12Resource> _constantBuffer;
+        Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> _commandList;
+        Microsoft::WRL::ComPtr<ID3D12RootSignature>	_rootSignature;
+        Microsoft::WRL::ComPtr<ID3D12PipelineState>	_pipelineState;
+        Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> _cbvHeap;
+        Microsoft::WRL::ComPtr<ID3D12Resource> _vertexBuffer;
+        Microsoft::WRL::ComPtr<ID3D12Resource> _indexBuffer;
+        Microsoft::WRL::ComPtr<ID3D12Resource> _constantBuffer;
         ModelViewProjectionConstantBuffer _constantBufferData;
         UINT8* _mappedConstantBuffer;
         UINT _cbvDescriptorSize;
