@@ -259,8 +259,8 @@ void Sample3DSceneRenderer::Rotate(float radians)
 
 winrt::Windows::Foundation::IAsyncOperation<IBuffer> Sample3DSceneRenderer::ReadDataAsync(winrt::param::hstring const& filename)
 {
-    StorageFolder folder = Package::Current().InstalledLocation();
-    StorageFile file = co_await folder.GetFileAsync(filename);
+    auto folder = Package::Current().InstalledLocation();
+    auto file = co_await folder.GetFileAsync(filename);
     co_return co_await FileIO::ReadBufferAsync(file);
 }
 
@@ -302,10 +302,10 @@ void Sample3DSceneRenderer::CreateRootSignature()
 
 winrt::Windows::Foundation::IAsyncAction Sample3DSceneRenderer::LoadShaders()
 {
-    IBuffer vertexShaderBuffer = co_await ReadDataAsync(L"SampleVertexShader.cso");
+    auto vertexShaderBuffer = co_await ReadDataAsync(L"SampleVertexShader.cso");
     _vertexShader = GetBufferView(vertexShaderBuffer);
 
-    IBuffer pixelShaderBuffer = co_await ReadDataAsync(L"SamplePixelShader.cso");
+    auto pixelShaderBuffer = co_await ReadDataAsync(L"SamplePixelShader.cso");
     _pixelShader = GetBufferView(pixelShaderBuffer);
 
     co_return;
@@ -497,7 +497,7 @@ void Sample3DSceneRenderer::UploadCommands()
 
     for (int n = 0; n < c_frameCount; n++)
     {
-        D3D12_CONSTANT_BUFFER_VIEW_DESC desc;
+        D3D12_CONSTANT_BUFFER_VIEW_DESC desc = {};
         desc.BufferLocation = cbvGpuAddress;
         desc.SizeInBytes = c_alignedConstantBufferSize;
         d3dDevice->CreateConstantBufferView(&desc, cbvCpuHandle);
