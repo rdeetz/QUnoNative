@@ -73,9 +73,9 @@ void FrameworkView::OnPointerPressed(IInspectable const&, PointerEventArgs const
         float2 const size = visual.Size();
 
         if ((point.x >= offset.x) &&
-            (point.x < offset.x + size.x) &&
+            (point.x < (offset.x + size.x)) &&
             (point.y >= offset.y) &&
-            (point.y < offset.y) + size.y)
+            (point.y < (offset.y + size.y)))
         {
             _selected = visual;
             _offset.x = offset.x - point.x;
