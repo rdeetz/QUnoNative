@@ -28,9 +28,6 @@ Sample3DSceneRenderer::Sample3DSceneRenderer(std::shared_ptr<DeviceResources> co
 {
     LoadState();
     ZeroMemory(&_constantBufferData, sizeof(_constantBufferData));
-
-    CreateDeviceDependentResources();
-    CreateWindowSizeDependentResources();
 }
 
 Sample3DSceneRenderer::~Sample3DSceneRenderer()
@@ -39,22 +36,22 @@ Sample3DSceneRenderer::~Sample3DSceneRenderer()
     _mappedConstantBuffer = nullptr;
 }
 
-void Sample3DSceneRenderer::CreateDeviceDependentResources()
+winrt::Windows::Foundation::IAsyncAction Sample3DSceneRenderer::CreateDeviceDependentResources()
 {
     CreateRootSignature();
-    LoadShaders();
+    co_await LoadShaders();
     CreatePipelineState();
     UploadCommands();
 
     _loadingComplete = true;
 
-    return;
+    co_return;
 }
 
 void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 {
     RECT outputSize = _deviceResources->GetOutputSize();
-    float aspectRatio = (outputSize.right - outputSize.left) / (outputSize.bottom - outputSize.top);
+    float aspectRatio = static_cast<float>((outputSize.right - outputSize.left) / (outputSize.bottom - outputSize.top));
     float fovAngleY = 70.0f * XM_PI / 180.0f;
 
     D3D12_VIEWPORT viewport = _deviceResources->GetScreenViewport();

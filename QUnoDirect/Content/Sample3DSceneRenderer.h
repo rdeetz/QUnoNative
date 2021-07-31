@@ -21,7 +21,7 @@ namespace Mooville::QUno::Direct
     public:
         Sample3DSceneRenderer(std::shared_ptr<DeviceResources> const& deviceResources);
         ~Sample3DSceneRenderer();
-        void CreateDeviceDependentResources();
+        winrt::Windows::Foundation::IAsyncAction CreateDeviceDependentResources();
         void CreateWindowSizeDependentResources();
         void Update(StepTimer const& timer);
         bool Render();

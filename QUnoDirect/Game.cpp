@@ -19,14 +19,13 @@ Game::Game() noexcept(false)
 void Game::Initialize(::IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation)
 {
     _deviceResources->SetWindow(window, width, height, rotation);
+    CreateRenderer();
 
     _deviceResources->CreateDeviceDependentResources();
     CreateDeviceDependentResources();
 
     _deviceResources->CreateWindowSizeDependentResources();
     CreateWindowSizeDependentResources();
-
-    CreateRenderer();
 
     // TODO Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
@@ -199,6 +198,7 @@ void Game::CreateDeviceDependentResources()
     }
 
     // TODO Initialize device dependent objects here (independent of window size).
+    //_sceneRenderer->CreateDeviceDependentResources();
 
     return;
 }
@@ -207,6 +207,8 @@ void Game::CreateWindowSizeDependentResources()
 {
     // TODO Initialize windows-size dependent objects here.
     //      Allocate all memory resources that change on a window SizeChanged event.
+    //_sceneRenderer->CreateWindowSizeDependentResources();
+
     return;
 }
 
