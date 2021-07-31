@@ -4,7 +4,7 @@ An Uno-like card game.
 
 ## Requirements
 
-* Windows 10 (11?)
+* Windows 10 or 11
 * [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk/)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.10)
 * [C++/WinRT Extension](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
@@ -26,6 +26,6 @@ modern Windows and C++.
 * `QUnoBare` contains a Universal Windows Platform application implemented with C++/WinRT that uses 
 `Windows.ApplicationModel.Core.CoreApplication` directly and draws a user interface 
 using the Composition layer.
-* `QUnoDirect` contains a Universal Windows Platform application using DirectX 12 and C++/CX.
+* `QUnoDirect` contains a Universal Windows Platform application using DirectX 12.
 * `QUnoReunion` contains a Windows desktop application implemented using C++/WinRT and the 
 [Windows UI Library](https://github.com/microsoft/microsoft-ui-xaml).
