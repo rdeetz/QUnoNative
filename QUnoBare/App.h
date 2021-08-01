@@ -8,6 +8,7 @@
 
 using namespace winrt;
 using namespace Windows;
+using namespace Windows::ApplicationModel::Activation;
 using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Foundation::Numerics;
 using namespace Windows::UI;
@@ -32,6 +33,7 @@ namespace winrt::Mooville::QUno::Bare
         void Run();
         void SetWindow(CoreWindow const&);
 
+        void OnActivated(IInspectable const&, IActivatedEventArgs const&);
         void OnPointerPressed(IInspectable const&, PointerEventArgs const&);
         void OnPointerMoved(IInspectable const&, PointerEventArgs const&);
         void OnPointerReleased(IInspectable const&, PointerEventArgs const&);

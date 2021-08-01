@@ -20,8 +20,10 @@ IFrameworkView FrameworkViewSource::CreateView()
     return make<FrameworkView>();
 }
 
-void FrameworkView::Initialize(CoreApplicationView const&)
+void FrameworkView::Initialize(CoreApplicationView const& applicationView)
 {
+    applicationView.Activated({ this, &FrameworkView::OnActivated });
+
     return;
 }
 
@@ -56,8 +58,13 @@ void FrameworkView::SetWindow(CoreWindow const& window)
 
     window.PointerPressed({ this, &FrameworkView::OnPointerPressed });
     window.PointerMoved({ this, &FrameworkView::OnPointerMoved });
-    window.PointerReleased({ this, &FrameworkView::OnPointerReleased });
+    window.PointerReleased({ this, &FrameworkView::OnPointerReleased });    
 
+    return;
+}
+
+void FrameworkView::OnActivated(IInspectable const&, IActivatedEventArgs const&)
+{
     return;
 }
 
@@ -127,8 +134,8 @@ void FrameworkView::AddVisual(float2 const point)
 
     static Windows::UI::Color colors[] =
     {
-        { 0xDC, 0x5B, 0x9B, 0xD5 },
-        { 0xDC, 0xED, 0x7D, 0x31 },
+        { 0xDC, 0x5B, 0x84, 0xB5 },
+        { 0xDC, 0xED, 0x31, 0x31 },
         { 0xDC, 0x70, 0xAD, 0x47 },
         { 0xDC, 0xFF, 0xC0, 0x00 }
     };
