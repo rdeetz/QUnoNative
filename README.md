@@ -5,10 +5,10 @@ An Uno-like card game.
 ## Requirements
 
 * Windows 10 or 11
-* [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk/)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/) (I use the Community edition, v16.10)
+* [Windows SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-sdk/)
+* [Windows App SDK](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/) (I use the Community edition, v17)
 * [C++/WinRT Extension](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
-* [Windows App SDK Extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftProjectReunion)
 * Your favorite editor (my favorite editor is [Visual Studio Code](https://code.visualstudio.com/))
 
 ## How To Play
