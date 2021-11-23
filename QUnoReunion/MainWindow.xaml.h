@@ -2,7 +2,7 @@
 
 #include "MainWindow.g.h"
 
-namespace winrt::QUnoReunion::implementation
+namespace winrt::Mooville::QUno::Reunion::implementation
 {
     struct MainWindow : MainWindowT<MainWindow>
     {
@@ -15,7 +15,7 @@ namespace winrt::QUnoReunion::implementation
     };
 }
 
-namespace winrt::QUnoReunion::factory_implementation
+namespace winrt::Mooville::QUno::Reunion::factory_implementation
 {
     struct MainWindow : MainWindowT<MainWindow, implementation::MainWindow>
     {

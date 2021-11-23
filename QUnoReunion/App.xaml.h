@@ -2,7 +2,7 @@
 
 #include "App.xaml.g.h"
 
-namespace winrt::QUnoReunion::implementation
+namespace winrt::Mooville::QUno::Reunion::implementation
 {
     struct App : AppT<App>
     {
