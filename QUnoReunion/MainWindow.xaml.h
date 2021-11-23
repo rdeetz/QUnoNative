@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoReunion - MainWindow.xaml.h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "MainWindow.g.h"
 

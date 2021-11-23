@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿// QUnoReunion - App.xaml..h
+// 2021 Roger Deetz
+
+#pragma once
 
 #include "App.xaml.g.h"
 
