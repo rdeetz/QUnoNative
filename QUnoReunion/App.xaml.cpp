@@ -32,6 +32,7 @@ App::App()
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
     window = make<MainWindow>();
+    window.Title(L"QUno for the Windows App SDK");
     window.Activate();
 
     return;
