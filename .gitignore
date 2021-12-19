@@ -8,5 +8,6 @@ packages/
 *.pfx
 *.filters
 *.cache
+*.aps
 Generated Files/
 AppPackages/
