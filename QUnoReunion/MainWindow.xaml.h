@@ -1,5 +1,5 @@
 ﻿// QUnoReunion - MainWindow.xaml.h
-// 2021 Roger Deetz
+// 2022 Roger Deetz
 
 #pragma once
 
