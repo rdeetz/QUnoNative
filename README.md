@@ -4,7 +4,7 @@ An Uno-like card game.
 
 ## Requirements
 
-* Windows 10 or 11
+* Windows 11 or Windows 10
 * [Windows SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-sdk/)
 * [Windows App SDK](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/)
 * [Visual Studio 2022](https://visualstudio.microsoft.com/) (I use the Community edition, v17)

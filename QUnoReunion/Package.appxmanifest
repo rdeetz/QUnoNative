@@ -7,9 +7,9 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="2d0693e1-faee-4b89-b1c8-f2da3f814758"
+    Name="Mooville.QUno.Reunion.v6"
     Publisher="CN=Roger"
-    Version="6.0.0.0" />
+    Version="6.0.1.0" />
 
   <Properties>
     <DisplayName>QUno</DisplayName>
@@ -31,7 +31,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="QUno"
+        DisplayName="QUno for the Windows App SDK"
         Description="An Uno-like card game."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
