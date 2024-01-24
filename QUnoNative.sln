@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoBare", "QUnoBare\QUnoBa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoComponent", "QUnoComponent\QUnoComponent.vcxproj", "{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QUnoReunion", "QUnoReunion\QUnoReunion.vcxproj", "{BC917B8E-9E6B-494B-9974-F83730AE2F3D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -61,30 +59,6 @@ Global
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x64.Build.0 = Release|x64
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x86.ActiveCfg = Release|Win32
 		{E3500191-7F00-41AF-B2B4-40FCDD7F1B8C}.Release|x86.Build.0 = Release|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|ARM.ActiveCfg = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|ARM.Build.0 = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|ARM.Deploy.0 = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|arm64.ActiveCfg = Debug|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|arm64.Build.0 = Debug|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|arm64.Deploy.0 = Debug|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x64.ActiveCfg = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x64.Build.0 = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x64.Deploy.0 = Debug|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x86.ActiveCfg = Debug|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x86.Build.0 = Debug|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Debug|x86.Deploy.0 = Debug|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|ARM.ActiveCfg = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|ARM.Build.0 = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|ARM.Deploy.0 = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|arm64.ActiveCfg = Release|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|arm64.Build.0 = Release|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|arm64.Deploy.0 = Release|arm64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x64.ActiveCfg = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x64.Build.0 = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x64.Deploy.0 = Release|x64
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x86.ActiveCfg = Release|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x86.Build.0 = Release|Win32
-		{BC917B8E-9E6B-494B-9974-F83730AE2F3D}.Release|x86.Deploy.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
