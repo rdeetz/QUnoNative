@@ -3,7 +3,7 @@
   <Identity
     Name="Mooville.QUno.Bare.v6"
     Publisher="CN=Roger"
-    Version="6.0.1.0" />
+    Version="6.0.2.0" />
   <mp:PhoneIdentity PhoneProductId="a3184209-f48d-4434-becb-50185fafd2e6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
   <Properties>
     <DisplayName>QUno</DisplayName>
