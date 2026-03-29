@@ -28,6 +28,7 @@ namespace winrt::Mooville::QUno::Model::implementation
         bool CanPlayCard(Mooville::QUno::Model::Card card);
         void PlayCard(Mooville::QUno::Model::Card card, Mooville::QUno::Model::Color wildColor);
         Mooville::QUno::Model::Card DrawCard();
+        void EndTurn();
 
     private:
         Windows::Foundation::Collections::IObservableVector<Mooville::QUno::Model::Player> _players;

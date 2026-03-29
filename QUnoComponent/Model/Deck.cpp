@@ -19,9 +19,9 @@ namespace winrt::Mooville::QUno::Model::implementation
 
     Mooville::QUno::Model::Card Deck::CurrentCard()
     {
-        if (_drawPile.Size() > 0)
+        if (_discardPile.Size() > 0)
         {
-            auto card = _drawPile.GetAt(0);
+            auto card = _discardPile.GetAt(0);
             return card;
         }
         else
@@ -54,7 +54,20 @@ namespace winrt::Mooville::QUno::Model::implementation
 
     void Deck::Shuffle()
     {
-        throw hresult_not_implemented();
+        if (_drawPile.Size() <= 1)
+        {
+            return;
+        }
+
+        for (uint32_t i = _drawPile.Size() - 1; i > 0; i--)
+        {
+            uint32_t randomIndex = GetRandomIndex(i);
+            auto temp = _drawPile.GetAt(i);
+            _drawPile.SetAt(i, _drawPile.GetAt(randomIndex));
+            _drawPile.SetAt(randomIndex, temp);
+        }
+
+        return;
     }
 
     Mooville::QUno::Model::Card Deck::Draw()
@@ -82,7 +95,7 @@ namespace winrt::Mooville::QUno::Model::implementation
 
                 for (uint32_t i = _drawPile.Size() - 1; i > 0; i--)
                 {
-                    uint32_t randomIndex = GetRandomIndex(_drawPile.Size() - 1);
+                    uint32_t randomIndex = GetRandomIndex(i);
                     auto temp = _drawPile.GetAt(i);
                     _drawPile.SetAt(i, _drawPile.GetAt(randomIndex));
                     _drawPile.SetAt(randomIndex, temp);
